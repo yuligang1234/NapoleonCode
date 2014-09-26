@@ -1,0 +1,15 @@
+D:\WebForm\Study\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\bin\Debug\Common.dll
+D:\WebForm\Study\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\bin\Debug\Common.pdb
+D:\WebForm\Study\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.dll
+D:\WebForm\Study\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.pdb
+D:\WebForm\Study\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\bin\Debug\Common.dll
+D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\bin\Debug\Common.pdb
+D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.dll
+D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.pdb
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\bin\Debug\Common.dll
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\bin\Debug\Common.pdb
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.dll
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\Common\obj\Debug\Common.pdb
