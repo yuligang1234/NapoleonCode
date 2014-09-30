@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using NapoleonCode.Common;
 using NapoleonCode.BLL;
 using NapoleonCode.Model;
-using NapoleonCode.Win.Template;
+using NapoleonCode.Win.MovingTemplate;
 
 namespace NapoleonCode.Win
 {
@@ -131,12 +131,12 @@ namespace NapoleonCode.Win
         {
             //清除选中状态
             RadAutofacXml.Checked = RadBaseField.Checked = RadBaseModel.Checked = RadBaseProcedure.Checked = RadNhMapping.Checked = RadNhModel.Checked = RadNhXml.Checked = false;
-            if (CobSelectTemb.SelectedIndex == 0)
+            if (CobSelectTemb.SelectedIndex == 0)//基础模版
             {
                 PlBaseTemp.Visible = true;
                 PlNhTemp.Visible = PlAutofacTemp.Visible = false;
             }
-            else if (CobSelectTemb.SelectedIndex == 1)
+            else if (CobSelectTemb.SelectedIndex == 1)//NHibernate模版
             {
                 PlNhTemp.Visible = true;
                 PlBaseTemp.Visible = PlAutofacTemp.Visible = false;
@@ -144,7 +144,7 @@ namespace NapoleonCode.Win
                 TxtNhMapping.Text = PublicFun.GetAppConfig("NhMappingNameSpace");
                 TxtNhModel.Text = PublicFun.GetAppConfig("NhNameSpace");
             }
-            else if (CobSelectTemb.SelectedIndex == 2)
+            else if (CobSelectTemb.SelectedIndex == 2)//AutoFac模版
             {
                 PlAutofacTemp.Visible = true;
                 PlBaseTemp.Visible = PlNhTemp.Visible = false;
@@ -161,13 +161,13 @@ namespace NapoleonCode.Win
         {
             if (!string.IsNullOrEmpty(PublicFiled.DataBaseName))
             {
-                if (!string.IsNullOrEmpty(PublicFiled.TemplateName))
+                if (!string.IsNullOrEmpty(PublicFiled.MovingTemplateName))
                 {
                     //映射文件和类的命名空间
                     PublicFiled.NhMappingNameSpace = TxtNhMapping.Text;
                     PublicFiled.NhNameSpace = TxtNhModel.Text;
                     RtxtContent.Clear();//清除样式
-                    switch (PublicFiled.TemplateName)
+                    switch (PublicFiled.MovingTemplateName)
                     {
                         case "RadBaseField"://基础模版的字段
                             RtxtContent.Text = BaseTemplate.InsertBaseField(_appConfig);
@@ -231,8 +231,21 @@ namespace NapoleonCode.Win
             RadioButton radio = (RadioButton)sender;
             if (radio.Checked)
             {
-                PublicFiled.TemplateName = radio.Name;
+                PublicFiled.MovingTemplateName = radio.Name;
             }
+        }
+
+        /// <summary>
+        ///  返回
+        /// </summary>
+        /// Author  : 俞立钢
+        /// Company : 绍兴标点电子技术有限公司
+        /// Created : 2014-09-29 13:32:31
+        private void BtnReturn_Click(object sender, System.EventArgs e)
+        {
+            StartForm form = new StartForm();
+            Hide();
+            form.Show();
         }
 
 

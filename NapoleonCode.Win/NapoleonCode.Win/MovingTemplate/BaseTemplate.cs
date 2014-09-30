@@ -4,7 +4,7 @@ using NapoleonCode.Common;
 using NapoleonCode.BLL;
 using NapoleonCode.Model;
 
-namespace NapoleonCode.Win.Template
+namespace NapoleonCode.Win.MovingTemplate
 {
     public class BaseTemplate
     {

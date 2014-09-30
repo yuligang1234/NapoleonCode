@@ -10,6 +10,5 @@ D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Mo
 D:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Model\obj\Debug\NapoleonCode.Model.pdb
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Model\bin\Debug\NapoleonCode.Model.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Model\bin\Debug\NapoleonCode.Model.pdb
-E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Model\obj\Debug\NapoleonCode.Model.csprojResolveAssemblyReference.cache
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Model\obj\Debug\NapoleonCode.Model.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Model\obj\Debug\NapoleonCode.Model.pdb

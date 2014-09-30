@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnRun = new System.Windows.Forms.Button();
+            this.BtnReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +117,7 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(50, 259);
+            this.BtnSave.Location = new System.Drawing.Point(24, 259);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(64, 23);
             this.BtnSave.TabIndex = 8;
@@ -126,7 +127,7 @@
             // 
             // BtnRun
             // 
-            this.BtnRun.Location = new System.Drawing.Point(166, 259);
+            this.BtnRun.Location = new System.Drawing.Point(114, 259);
             this.BtnRun.Name = "BtnRun";
             this.BtnRun.Size = new System.Drawing.Size(64, 23);
             this.BtnRun.TabIndex = 9;
@@ -134,11 +135,22 @@
             this.BtnRun.UseVisualStyleBackColor = true;
             this.BtnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
+            // BtnReturn
+            // 
+            this.BtnReturn.Location = new System.Drawing.Point(201, 259);
+            this.BtnReturn.Name = "BtnReturn";
+            this.BtnReturn.Size = new System.Drawing.Size(64, 23);
+            this.BtnReturn.TabIndex = 10;
+            this.BtnReturn.Text = "返回";
+            this.BtnReturn.UseVisualStyleBackColor = true;
+            this.BtnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
+            // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 319);
+            this.Controls.Add(this.BtnReturn);
             this.Controls.Add(this.BtnRun);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.TxtPassWord);
@@ -156,6 +168,7 @@
             this.Name = "StartForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "数据库登录";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CodeForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +186,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Button BtnRun;
+        private System.Windows.Forms.Button BtnReturn;
     }
 }

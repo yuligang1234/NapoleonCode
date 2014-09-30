@@ -48,7 +48,9 @@ E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Wi
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.csprojResolveAssemblyReference.cache
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.ContentForm.resources
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.Properties.Resources.resources
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.SelectForm.resources
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.StartForm.resources
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.StaticForm.resources
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\NapoleonCode.Win.csproj.GenerateResource.Cache
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\代码生成器.exe
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Win\obj\Debug\代码生成器.pdb

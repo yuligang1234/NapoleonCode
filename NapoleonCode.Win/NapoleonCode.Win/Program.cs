@@ -13,7 +13,7 @@ namespace NapoleonCode.Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartForm());
+            Application.Run(new SelectForm());
         }
     }
 }

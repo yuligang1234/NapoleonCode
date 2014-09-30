@@ -45,12 +45,20 @@ namespace NapoleonCode.Common
         public static string DataBaseName = "";
 
         /// <summary>
-        ///  模版
+        ///  动态模版
         /// </summary>
         /// Author  : 俞立钢
         /// Company : 绍兴标点电子技术有限公司
         /// Created : 2014-09-25 09:11:08
-        public static string TemplateName = "";
+        public static string MovingTemplateName = "";
+
+        /// <summary>
+        ///  静态模版
+        /// </summary>
+        /// Author  : 俞立钢
+        /// Company : 绍兴标点电子技术有限公司
+        /// Created : 2014-09-29 14:47:31
+        public static string StaticTemplateName = "";
 
         /// <summary>
         ///  类命名空间
@@ -74,7 +82,7 @@ namespace NapoleonCode.Common
         /// Author  : 俞立钢
         /// Company : 绍兴标点电子技术有限公司
         /// Created : 2014-09-25 10:17:44
-        public static readonly string WarpSymbol = "\n";
+        public static readonly string WarpSymbol = string.Format("\n");
 
         /// <summary>
         ///  TAB符号
@@ -82,7 +90,7 @@ namespace NapoleonCode.Common
         /// Author  : 俞立钢
         /// Company : 绍兴标点电子技术有限公司
         /// Created : 2014-09-25 10:17:54
-        public static readonly string TabSymbol = "\t";
+        public static readonly string TabSymbol = string.Format("\t");
 
     }
 }

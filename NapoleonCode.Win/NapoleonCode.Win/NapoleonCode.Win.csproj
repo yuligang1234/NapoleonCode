@@ -48,7 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>128.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -65,8 +66,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Template\AutofacTemplate.cs" />
-    <Compile Include="Template\BaseTemplate.cs" />
+    <Compile Include="SelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectForm.Designer.cs">
+      <DependentUpon>SelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaticForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaticForm.Designer.cs">
+      <DependentUpon>StaticForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovingTemplate\AutofacTemplate.cs" />
+    <Compile Include="MovingTemplate\BaseTemplate.cs" />
     <Compile Include="ContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,7 +94,8 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Template\NhibernateTemplate.cs" />
+    <Compile Include="MovingTemplate\NhibernateTemplate.cs" />
+    <Compile Include="StaticTemplate\Log4Template.cs" />
     <EmbeddedResource Include="ContentForm.resx">
       <DependentUpon>ContentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,10 +108,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectForm.resx">
+      <DependentUpon>SelectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <EmbeddedResource Include="StaticForm.resx">
+      <DependentUpon>StaticForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,10 +131,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="128.ico" />
+    <Content Include="Resources\128.ico" />
     <Content Include="Resources\database.png" />
     <Content Include="Resources\database_accept.png" />
     <Content Include="Resources\database_add.png" />
+    <Content Include="Resources\folder-close.png" />
+    <Content Include="Resources\folder-open.png" />
+    <Content Include="Resources\folder_stroke.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NapoleonCode.Common\NapoleonCode.Common.csproj">

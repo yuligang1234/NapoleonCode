@@ -36,6 +36,9 @@ namespace NapoleonCode.Win
             this.TreeDataBase = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.PlAutofacTemp = new System.Windows.Forms.Panel();
+            this.RadAutofacXml = new System.Windows.Forms.RadioButton();
+            this.RtxtContent = new System.Windows.Forms.RichTextBox();
             this.BtnSubmit = new System.Windows.Forms.Button();
             this.PlNhTemp = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,14 +53,12 @@ namespace NapoleonCode.Win
             this.RadBaseModel = new System.Windows.Forms.RadioButton();
             this.RadBaseField = new System.Windows.Forms.RadioButton();
             this.CobSelectTemb = new System.Windows.Forms.ComboBox();
-            this.RtxtContent = new System.Windows.Forms.RichTextBox();
-            this.PlAutofacTemp = new System.Windows.Forms.Panel();
-            this.RadAutofacXml = new System.Windows.Forms.RadioButton();
+            this.BtnReturn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.PlAutofacTemp.SuspendLayout();
             this.PlNhTemp.SuspendLayout();
             this.PlBaseTemp.SuspendLayout();
-            this.PlAutofacTemp.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -95,6 +96,7 @@ namespace NapoleonCode.Win
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.PlAutofacTemp);
+            this.groupBox2.Controls.Add(this.BtnReturn);
             this.groupBox2.Controls.Add(this.RtxtContent);
             this.groupBox2.Controls.Add(this.BtnSubmit);
             this.groupBox2.Controls.Add(this.PlNhTemp);
@@ -107,11 +109,39 @@ namespace NapoleonCode.Win
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "生成代码";
             // 
+            // PlAutofacTemp
+            // 
+            this.PlAutofacTemp.Controls.Add(this.RadAutofacXml);
+            this.PlAutofacTemp.Location = new System.Drawing.Point(170, 16);
+            this.PlAutofacTemp.Name = "PlAutofacTemp";
+            this.PlAutofacTemp.Size = new System.Drawing.Size(756, 31);
+            this.PlAutofacTemp.TabIndex = 6;
+            // 
+            // RadAutofacXml
+            // 
+            this.RadAutofacXml.AutoSize = true;
+            this.RadAutofacXml.Location = new System.Drawing.Point(16, 8);
+            this.RadAutofacXml.Name = "RadAutofacXml";
+            this.RadAutofacXml.Size = new System.Drawing.Size(71, 16);
+            this.RadAutofacXml.TabIndex = 0;
+            this.RadAutofacXml.TabStop = true;
+            this.RadAutofacXml.Text = "配置文件";
+            this.RadAutofacXml.UseVisualStyleBackColor = true;
+            this.RadAutofacXml.Click += new System.EventHandler(this.RadNhModel_Click);
+            // 
+            // RtxtContent
+            // 
+            this.RtxtContent.Location = new System.Drawing.Point(7, 53);
+            this.RtxtContent.Name = "RtxtContent";
+            this.RtxtContent.Size = new System.Drawing.Size(1036, 601);
+            this.RtxtContent.TabIndex = 5;
+            this.RtxtContent.Text = "";
+            // 
             // BtnSubmit
             // 
-            this.BtnSubmit.Location = new System.Drawing.Point(968, 22);
+            this.BtnSubmit.Location = new System.Drawing.Point(931, 21);
             this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.BtnSubmit.Size = new System.Drawing.Size(51, 23);
             this.BtnSubmit.TabIndex = 4;
             this.BtnSubmit.Text = "生成";
             this.BtnSubmit.UseVisualStyleBackColor = true;
@@ -126,9 +156,9 @@ namespace NapoleonCode.Win
             this.PlNhTemp.Controls.Add(this.RadNhMapping);
             this.PlNhTemp.Controls.Add(this.RadNhXml);
             this.PlNhTemp.Controls.Add(this.RadNhModel);
-            this.PlNhTemp.Location = new System.Drawing.Point(169, 20);
+            this.PlNhTemp.Location = new System.Drawing.Point(170, 13);
             this.PlNhTemp.Name = "PlNhTemp";
-            this.PlNhTemp.Size = new System.Drawing.Size(792, 31);
+            this.PlNhTemp.Size = new System.Drawing.Size(755, 31);
             this.PlNhTemp.TabIndex = 3;
             // 
             // label2
@@ -204,9 +234,9 @@ namespace NapoleonCode.Win
             this.PlBaseTemp.Controls.Add(this.RadBaseProcedure);
             this.PlBaseTemp.Controls.Add(this.RadBaseModel);
             this.PlBaseTemp.Controls.Add(this.RadBaseField);
-            this.PlBaseTemp.Location = new System.Drawing.Point(170, 18);
+            this.PlBaseTemp.Location = new System.Drawing.Point(170, 16);
             this.PlBaseTemp.Name = "PlBaseTemp";
-            this.PlBaseTemp.Size = new System.Drawing.Size(791, 31);
+            this.PlBaseTemp.Size = new System.Drawing.Size(755, 31);
             this.PlBaseTemp.TabIndex = 2;
             // 
             // RadBaseProcedure
@@ -259,33 +289,15 @@ namespace NapoleonCode.Win
             this.CobSelectTemb.TabIndex = 1;
             this.CobSelectTemb.SelectedIndexChanged += new System.EventHandler(this.CobSelectTemb_SelectedIndexChanged);
             // 
-            // RtxtContent
+            // BtnReturn
             // 
-            this.RtxtContent.Location = new System.Drawing.Point(7, 57);
-            this.RtxtContent.Name = "RtxtContent";
-            this.RtxtContent.Size = new System.Drawing.Size(1036, 597);
-            this.RtxtContent.TabIndex = 5;
-            this.RtxtContent.Text = "";
-            // 
-            // PlAutofacTemp
-            // 
-            this.PlAutofacTemp.Controls.Add(this.RadAutofacXml);
-            this.PlAutofacTemp.Location = new System.Drawing.Point(170, 16);
-            this.PlAutofacTemp.Name = "PlAutofacTemp";
-            this.PlAutofacTemp.Size = new System.Drawing.Size(792, 31);
-            this.PlAutofacTemp.TabIndex = 6;
-            // 
-            // RadAutofacXml
-            // 
-            this.RadAutofacXml.AutoSize = true;
-            this.RadAutofacXml.Location = new System.Drawing.Point(16, 8);
-            this.RadAutofacXml.Name = "RadAutofacXml";
-            this.RadAutofacXml.Size = new System.Drawing.Size(71, 16);
-            this.RadAutofacXml.TabIndex = 0;
-            this.RadAutofacXml.TabStop = true;
-            this.RadAutofacXml.Text = "配置文件";
-            this.RadAutofacXml.UseVisualStyleBackColor = true;
-            this.RadAutofacXml.Click += new System.EventHandler(this.RadNhModel_Click);
+            this.BtnReturn.Location = new System.Drawing.Point(992, 21);
+            this.BtnReturn.Name = "BtnReturn";
+            this.BtnReturn.Size = new System.Drawing.Size(51, 23);
+            this.BtnReturn.TabIndex = 6;
+            this.BtnReturn.Text = "返回";
+            this.BtnReturn.UseVisualStyleBackColor = true;
+            this.BtnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
             // ContentForm
             // 
@@ -299,16 +311,16 @@ namespace NapoleonCode.Win
             this.MaximizeBox = false;
             this.Name = "ContentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "模版生成";
+            this.Text = "动态模版";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CodeForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.PlAutofacTemp.ResumeLayout(false);
+            this.PlAutofacTemp.PerformLayout();
             this.PlNhTemp.ResumeLayout(false);
             this.PlNhTemp.PerformLayout();
             this.PlBaseTemp.ResumeLayout(false);
             this.PlBaseTemp.PerformLayout();
-            this.PlAutofacTemp.ResumeLayout(false);
-            this.PlAutofacTemp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -336,5 +348,6 @@ namespace NapoleonCode.Win
         private RichTextBox RtxtContent;
         private Panel PlAutofacTemp;
         private RadioButton RadAutofacXml;
+        private Button BtnReturn;
     }
 }

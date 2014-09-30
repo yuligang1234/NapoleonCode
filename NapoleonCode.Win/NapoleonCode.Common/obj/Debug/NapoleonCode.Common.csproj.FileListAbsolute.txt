@@ -1,5 +1,4 @@
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Common\bin\Debug\NapoleonCode.Common.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Common\bin\Debug\NapoleonCode.Common.pdb
-E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Common\obj\Debug\NapoleonCode.Common.csprojResolveAssemblyReference.cache
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Common\obj\Debug\NapoleonCode.Common.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.Common\obj\Debug\NapoleonCode.Common.pdb

@@ -107,6 +107,30 @@ namespace NapoleonCode.Win
             return appconfig;
         }
 
+        /// <summary>
+        ///  返回
+        /// </summary>
+        /// Author  : 俞立钢
+        /// Company : 绍兴标点电子技术有限公司
+        /// Created : 2014-09-29 13:34:33
+        private void BtnReturn_Click(object sender, EventArgs e)
+        {
+            SelectForm form = new SelectForm();
+            Hide();
+            form.ShowDialog();
+        }
+
+        /// <summary>
+        ///  关闭
+        /// </summary>
+        /// Author  : 俞立钢
+        /// Company : 绍兴标点电子技术有限公司
+        /// Created : 2014-09-29 14:45:08
+        private void CodeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
 
 
     }
