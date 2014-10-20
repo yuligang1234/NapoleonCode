@@ -3,10 +3,11 @@ using System.Windows.Forms;
 
 namespace NapoleonCode.Win
 {
-    public partial class SelectForm : Form
+    public partial class SelectForm : BaseForm
     {
         public SelectForm()
         {
+            ApplySkin("McSkin");
             InitializeComponent();
         }
 

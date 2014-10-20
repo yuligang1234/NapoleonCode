@@ -5,13 +5,14 @@ using NapoleonCode.Win.StaticTemplate;
 
 namespace NapoleonCode.Win
 {
-    public partial class StaticForm : Form
+    public partial class StaticForm : BaseForm
     {
 
 
 
         public StaticForm()
         {
+            ApplySkin("McSkin");
             InitializeComponent();
         }
 

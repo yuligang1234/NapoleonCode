@@ -5,11 +5,12 @@ using NapoleonCode.Model;
 
 namespace NapoleonCode.Win
 {
-    public partial class StartForm : Form
+    public partial class StartForm : BaseForm
     {
 
         public StartForm()
         {
+            ApplySkin("McSkin");
             InitializeComponent();
             //读取配置
             LoadValue();

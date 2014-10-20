@@ -11,6 +11,9 @@ namespace NapoleonCode.Win
         [STAThread]
         static void Main()
         {
+            //注册DevExpress皮肤
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.Skins.SkinManager.EnableFormSkins();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SelectForm());

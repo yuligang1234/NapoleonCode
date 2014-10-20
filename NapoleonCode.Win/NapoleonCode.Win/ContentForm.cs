@@ -8,7 +8,7 @@ using NapoleonCode.Win.MovingTemplate;
 
 namespace NapoleonCode.Win
 {
-    public partial class ContentForm : Form
+    public partial class ContentForm : BaseForm
     {
 
         private readonly MsSql _bll = new MsSql();
@@ -16,6 +16,7 @@ namespace NapoleonCode.Win
 
         public ContentForm(AppConfig appConfig)
         {
+            ApplySkin("McSkin");
             _appConfig = appConfig;
             InitializeComponent();
             LoadTree();
