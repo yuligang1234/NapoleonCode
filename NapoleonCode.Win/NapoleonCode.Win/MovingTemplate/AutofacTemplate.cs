@@ -10,7 +10,7 @@ namespace NapoleonCode.Win.MovingTemplate
     public class AutofacTemplate
     {
 
-        private static readonly MsSql Bll = new MsSql();
+        private static readonly MsSqlService Bll = new MsSqlService();
 
         /// <summary>
         ///  Autofac模版的配置文件

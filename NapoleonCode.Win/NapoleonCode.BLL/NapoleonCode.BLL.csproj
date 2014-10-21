@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MsSql.cs" />
+    <Compile Include="MsSqlService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqLiteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NapoleonCode.Common\NapoleonCode.Common.csproj">

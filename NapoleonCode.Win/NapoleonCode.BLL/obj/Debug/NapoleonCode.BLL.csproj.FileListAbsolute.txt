@@ -25,6 +25,7 @@ E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BL
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\NapoleonCode.Common.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\NapoleonCode.DAL.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\NapoleonCode.Model.dll
+E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\System.Data.SQLite.dll
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\NapoleonCode.Common.pdb
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\NapoleonCode.DAL.pdb
 E:\Napoleon\GitHub\代码生成器\NapoleonCode\NapoleonCode.Win\NapoleonCode.BLL\bin\Debug\NapoleonCode.Model.pdb

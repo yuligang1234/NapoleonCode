@@ -9,7 +9,7 @@ namespace NapoleonCode.Win.MovingTemplate
     public class NhibernateTemplate
     {
 
-        private static readonly MsSql Bll = new MsSql();
+        private static readonly MsSqlService Bll = new MsSqlService();
 
         /// <summary>
         ///  公用DataTable
