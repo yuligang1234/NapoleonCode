@@ -17,8 +17,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  退出程序
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 10:12:12
         private void SelectDbForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -28,8 +27,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  返回
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 10:04:28
         private void BtnReturn_Click(object sender, System.EventArgs e)
         {
@@ -41,8 +39,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  选择数据库类型
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 10:06:01
         private void BtnRun_Click(object sender, System.EventArgs e)
         {

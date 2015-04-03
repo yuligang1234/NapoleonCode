@@ -15,8 +15,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  公用DataTable
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 10:31:18
         private static DataTable GetTable(AppConfig appConfig)
         {
@@ -29,8 +28,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  NHibernate模版的实体类
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 10:01:16
         public static string InsertNhibernateModel(AppConfig appConfig)
         {
@@ -41,7 +39,7 @@ namespace NapoleonCode.Win.MovingTemplate
                 foreach (DataRow row in dataBaseTables.Rows)
                 {
                     sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString()));//注释
-                    sb.AppendFormat("public virtual {0} {1}{2}", PublicFun.FormatType(1, row["DataType"].ToString()), row["TableColumn"], PublicFiled.WarpSymbol);
+                    sb.AppendFormat("public virtual {0} {1}{2}", PublicFun.MsSqlFormatType(1, row["DataType"].ToString()), row["TableColumn"], PublicFiled.WarpSymbol);
                     sb.Append("{");
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
                     sb.AppendFormat("{0}get ;{1}", PublicFiled.TabSymbol, PublicFiled.WarpSymbol);
@@ -57,8 +55,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  NHibernate模版的映射文件
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-26 09:53:28
         public static string InsertNhibernateMapping(AppConfig appConfig)
         {
@@ -75,8 +72,9 @@ namespace NapoleonCode.Win.MovingTemplate
                     sb.AppendFormat("    <id name=\"{0}\" column=\"{0}\" type=\"{1}\">{2}", row["TableColumn"], row["DataType"], PublicFiled.WarpSymbol);
                     sb.AppendFormat("      <generator class=\"assigned\" />{0}", PublicFiled.WarpSymbol);
                     sb.AppendFormat("    </id>{0}", PublicFiled.WarpSymbol);
+                    continue;
                 }
-                sb.AppendFormat("    <property name=\"{0}\" column=\"{0}\" type=\"{1}\" />{2}", row["TableColumn"], PublicFun.FormatType(0, row["DataType"].ToString()), PublicFiled.WarpSymbol);
+                sb.AppendFormat("    <property name=\"{0}\" column=\"{0}\" type=\"{1}\" />{2}", row["TableColumn"], PublicFun.MsSqlFormatType(0, row["DataType"].ToString()), PublicFiled.WarpSymbol);
             }
             sb.AppendFormat("  </class>{0}", PublicFiled.WarpSymbol);
             sb.AppendFormat("</hibernate-mapping>{0}", PublicFiled.WarpSymbol);
@@ -87,8 +85,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  NHibernate模版的配置文件
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-26 10:51:27
         public static string InsertNhiberanteXml(AppConfig appConfig)
         {

@@ -19,8 +19,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  加载配置信息
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 14:58:18
         private void LoadValue()
         {
@@ -33,8 +32,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  保存配置
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 15:15:48
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -61,8 +59,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  判空
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 15:17:37
         private bool IsNull()
         {
@@ -77,8 +74,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  连接数据库
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 15:25:21
         private void BtnRun_Click(object sender, EventArgs e)
         {
@@ -91,8 +87,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  配置实体类
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:24:47
         private AppConfig GetModel()
         {
@@ -107,8 +102,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  返回
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 13:34:33
         private void BtnReturn_Click(object sender, EventArgs e)
         {
@@ -120,8 +114,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  关闭
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 14:45:08
         private void CodeForm_FormClosed(object sender, FormClosedEventArgs e)
         {

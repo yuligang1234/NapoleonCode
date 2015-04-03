@@ -11,16 +11,14 @@ namespace NapoleonCode.DAL
         /// <summary>
         ///  默认使用系统的数据库名登录
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:59:05
         private readonly string _dbName = string.Format("master");
 
         /// <summary>
         ///  获取数据库登录信息
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:59:19
         private string GetConnectionString(AppConfig appConfig, string dataBaseName)
         {
@@ -33,8 +31,7 @@ namespace NapoleonCode.DAL
         /// <param name="sql">The SQL.</param>
         /// <param name="appConfig"></param>
         /// <param name="dataBaseName"></param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:55:17
         public DataTable ExecuteSql(string sql, AppConfig appConfig, string dataBaseName)
         {
@@ -60,8 +57,7 @@ namespace NapoleonCode.DAL
         ///  数据库表名节点
         /// </summary>
         /// <returns>DataTable.</returns>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:38:40
         public DataTable GetTreeView(AppConfig appConfig, string tableName)
         {
@@ -75,8 +71,7 @@ namespace NapoleonCode.DAL
         /// <param name="appconfig"></param>
         /// <param name="dataBaseName"></param>
         /// <param name="type">类型(U-数据库表，V-视图......)</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-28 14:21:01
         public DataTable GetTreeView(AppConfig appconfig, string dataBaseName, string type)
         {

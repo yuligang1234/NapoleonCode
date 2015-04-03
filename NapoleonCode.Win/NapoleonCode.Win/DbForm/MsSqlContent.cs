@@ -26,8 +26,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  初始化窗体的时候，一些参数的设置
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-24 16:25:30
         private void LoadForm()
         {
@@ -40,8 +39,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         /// 加载左边的数据库表节点
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:56:13
         private void LoadTree()
         {
@@ -60,8 +58,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  加载具体的数据库表格
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-28 13:46:06
         private void LoadChildrenTree(string tableName, TreeNode node)
         {
@@ -75,8 +72,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  关闭页面
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 16:32:57
         private void CodeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -86,8 +82,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  树节点双击事件
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-27 16:54:33
         private void TreeDataBase_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -111,8 +106,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  单击事件
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-28 14:26:36
         private void TreeDataBase_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -125,8 +119,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  下拉框改变事件
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-24 16:36:55
         private void CobSelectTemb_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -155,8 +148,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  生成代码
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 11:13:20
         private void BtnSubmit_Click(object sender, System.EventArgs e)
         {
@@ -224,8 +216,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  模版选择事件
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 0001-01-01 00:00:00
         private void RadNhModel_Click(object sender, System.EventArgs e)
         {
@@ -239,8 +230,7 @@ namespace NapoleonCode.Win.DbForm
         /// <summary>
         ///  返回
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 13:32:31
         private void BtnReturn_Click(object sender, System.EventArgs e)
         {

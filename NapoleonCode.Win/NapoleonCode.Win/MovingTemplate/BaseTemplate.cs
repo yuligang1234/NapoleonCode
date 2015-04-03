@@ -18,10 +18,8 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  公用DataTable
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// <returns>DataTable.</returns>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
-        /// Created : 2014-09-25 10:31:18
+        /// Author  : Napoleon
+        /// Created : 2014-12-15 20:27:01
         private static DataTable GetTable(AppConfig appConfig)
         {
             string sql =
@@ -36,8 +34,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  基础模版的字段
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 15:21:23
         public static string InsertBaseField(AppConfig appConfig)
         {
@@ -50,7 +47,7 @@ namespace NapoleonCode.Win.MovingTemplate
                 foreach (DataRow row in dataBaseTables.Rows)
                 {
                     sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString())); //注释
-                    sb.AppendFormat("public const string Filed_{0} =\"{0}\" {1}", row["TableColumn"],
+                    sb.AppendFormat("public const string Filed_{0} =\"{0}\"; {1}", row["TableColumn"],
                         PublicFiled.WarpSymbol);
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
                 }
@@ -63,8 +60,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  基础模版的实体类
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 10:01:16
         public static string InsertBaseModel(AppConfig appConfig)
         {
@@ -77,10 +73,10 @@ namespace NapoleonCode.Win.MovingTemplate
                     //私有属性,_+首字母小写
                     string privateStr = string.Format("_{0}{1}", row["TableColumn"].ToString().ToLower().Substring(0, 1),
                         row["TableColumn"].ToString().Substring(1));
-                    sb.AppendFormat("private {0} {1}{2}", PublicFun.FormatType(0, row["DataType"].ToString()),
+                    sb.AppendFormat("private {0} {1};{2}", PublicFun.MsSqlFormatType(0, row["DataType"].ToString()),
                         privateStr, PublicFiled.WarpSymbol);
                     sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString())); //注释
-                    sb.AppendFormat("public {0} {1}{2}", PublicFun.FormatType(0, row["DataType"].ToString()),
+                    sb.AppendFormat("public {0} {1}{2}", PublicFun.MsSqlFormatType(0, row["DataType"].ToString()),
                         row["TableColumn"], PublicFiled.WarpSymbol);
                     sb.Append("{");
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
@@ -99,8 +95,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  基础模版的存储过程
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 10:01:16
         public static string InsertBaseProcedure(AppConfig appConfig)
         {
@@ -134,7 +129,7 @@ namespace NapoleonCode.Win.MovingTemplate
                         sb3.AppendFormat("{0}=@{0},", row["TableColumn"]);
                     }
                     sb.AppendFormat("{0}@{1} {2}=NULL{3}{4}--{5}", PublicFiled.TabSymbol, row["TableColumn"],
-                        PublicFun.FormatType(row["DataType"].ToString(), row["TypeLength"].ToString(),
+                        PublicFun.MsSqlFormatType(row["DataType"].ToString(), row["TypeLength"].ToString(),
                             row["DecimalLength"].ToString()), i == dataBaseTables.Rows.Count ? "" : ",",
                         PublicFiled.TabSymbol, row["TableDesc"]);
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
@@ -190,8 +185,7 @@ namespace NapoleonCode.Win.MovingTemplate
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
         /// <param name="tableName">数据库表名</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 10:31:18
         private static DataTable GetSqLiteTable(AppConfig appConfig, string tableName)
         {
@@ -204,8 +198,7 @@ namespace NapoleonCode.Win.MovingTemplate
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
         /// <param name="tableName">数据库表名</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-25 10:01:16
         public static string InsertSqLiteBaseModel(AppConfig appConfig, string tableName)
         {

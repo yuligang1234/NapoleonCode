@@ -19,8 +19,7 @@ namespace NapoleonCode.Model
         /// <summary>
         ///  数据库
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 16:57:56
         public string Database
         {
@@ -31,8 +30,7 @@ namespace NapoleonCode.Model
         /// <summary>
         ///  服务器名称
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 16:58:24
         public string ServerName
         {
@@ -43,8 +41,7 @@ namespace NapoleonCode.Model
         /// <summary>
         ///  登陆名
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 16:59:04
         public string UserName
         {
@@ -55,8 +52,7 @@ namespace NapoleonCode.Model
         /// <summary>
         ///  密码
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 16:59:47
         public string PassWord
         {
@@ -67,8 +63,7 @@ namespace NapoleonCode.Model
         /// <summary>
         ///  作者
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:00:07
         public string Author
         {
@@ -79,8 +74,7 @@ namespace NapoleonCode.Model
         /// <summary>
         ///  sqlite数据库文件路径
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 11:22:11
         public string SqliteUrl
         {

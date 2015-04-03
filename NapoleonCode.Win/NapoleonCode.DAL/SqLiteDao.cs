@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Data.SQLite;
 using System.Text;
-using NapoleonCode.Common;
 using NapoleonCode.Model;
 
 namespace NapoleonCode.DAL
@@ -14,8 +13,7 @@ namespace NapoleonCode.DAL
         /// <summary>
         ///  获取数据库登录信息
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:59:19
         private string GetConnectionString(AppConfig appConfig)
         {
@@ -27,8 +25,7 @@ namespace NapoleonCode.DAL
         /// </summary>
         /// <param name="sql">The SQL.</param>
         /// <param name="appConfig"></param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-24 17:55:17
         public DataTable ExecuteSql(string sql, AppConfig appConfig)
         {
@@ -55,8 +52,7 @@ namespace NapoleonCode.DAL
         /// </summary>
         /// <param name="appConfig"></param>
         /// <param name="type"></param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 13:40:07
         public DataTable GetTreeView(AppConfig appConfig, string type)
         {
@@ -74,8 +70,7 @@ namespace NapoleonCode.DAL
         /// </summary>
         /// <param name="appconfig"></param>
         /// <param name="tableName"></param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-08-28 14:21:01
         public DataTable GetTreeViews(AppConfig appconfig, string tableName)
         {

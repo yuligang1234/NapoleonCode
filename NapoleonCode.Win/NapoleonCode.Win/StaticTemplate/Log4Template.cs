@@ -10,8 +10,7 @@ namespace NapoleonCode.Win.StaticTemplate
         /// <summary>
         ///  文本配置
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 15:28:28
         public static string InsertTxtConfig()
         {
@@ -70,8 +69,7 @@ namespace NapoleonCode.Win.StaticTemplate
         /// <summary>
         ///  文本Helper
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 15:28:52
         public static string InsertTxtHelper()
         {
@@ -137,8 +135,7 @@ namespace NapoleonCode.Win.StaticTemplate
         /// <summary>
         ///  数据库配置
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 15:30:15
         public static string InsertDbConfig()
         {
@@ -214,8 +211,7 @@ namespace NapoleonCode.Win.StaticTemplate
         /// <summary>
         ///  数据库Helper
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 15:30:54
         public static string InsertDbHelper()
         {

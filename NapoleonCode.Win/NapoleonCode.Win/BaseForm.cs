@@ -13,24 +13,21 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  数据库名称字段
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 10:28:31
         protected string DbName { get; set; }
 
         /// <summary>
         ///  AppConfig实体类
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-21 11:18:59
         protected static AppConfig AppConfigs { get; set; }
 
         /// <summary>
         ///  应用皮肤
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-10-20 15:08:45
         protected static void ApplySkin(string skinName)
         {

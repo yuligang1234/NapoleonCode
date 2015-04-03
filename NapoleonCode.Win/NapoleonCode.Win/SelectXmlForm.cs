@@ -14,8 +14,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  动态配置
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 13:24:03
         private void BtnMovingConfing_Click(object sender, EventArgs e)
         {
@@ -27,8 +26,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  静态配置
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 13:25:05
         private void BtnStaticConfing_Click(object sender, EventArgs e)
         {
@@ -40,8 +38,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  关闭
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 13:29:18
         private void CodeForm_FormClosed(object sender, FormClosedEventArgs e)
         {

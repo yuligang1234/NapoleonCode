@@ -16,8 +16,7 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  Autofac模版的配置文件
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-26 14:41:00
         public static string InsertAutofacXml(AppConfig appConfig)
         {

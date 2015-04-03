@@ -19,8 +19,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  关闭
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 14:44:21
         private void CodeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -30,8 +29,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  返回
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 13:55:09
         private void BtnReturn_Click(object sender, System.EventArgs e)
         {
@@ -43,8 +41,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  代码生成
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 14:24:06
         private void BtnSubmit_Click(object sender, System.EventArgs e)
         {
@@ -80,8 +77,7 @@ namespace NapoleonCode.Win
         /// <summary>
         ///  双击选择模版节点
         /// </summary>
-        /// Author  : 俞立钢
-        /// Company : 绍兴标点电子技术有限公司
+        /// Author  : Napoleon
         /// Created : 2014-09-29 14:32:21
         private void TreeStaticTemp_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
