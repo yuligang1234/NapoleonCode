@@ -36,11 +36,13 @@ namespace NapoleonCode.Win.DbForm
             this.TreeDataBase = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.plAutoDapperTemp = new System.Windows.Forms.Panel();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.BtnBrowser = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtAutoDapper = new DevExpress.XtraEditors.TextEdit();
+            this.txtBrowser = new DevExpress.XtraEditors.TextEdit();
             this.BtnReturn = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
-            this.CobSelectTemb = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.PlAutofacTemp = new System.Windows.Forms.Panel();
-            this.RadAutofacXml = new System.Windows.Forms.RadioButton();
             this.RtxtContent = new System.Windows.Forms.RichTextBox();
             this.PlNhTemp = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,15 +52,22 @@ namespace NapoleonCode.Win.DbForm
             this.RadNhMapping = new System.Windows.Forms.RadioButton();
             this.RadNhXml = new System.Windows.Forms.RadioButton();
             this.RadNhModel = new System.Windows.Forms.RadioButton();
+            this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.PlAutofacTemp = new System.Windows.Forms.Panel();
+            this.RadAutofacXml = new System.Windows.Forms.RadioButton();
+            this.CobSelectTemb = new DevExpress.XtraEditors.ComboBoxEdit();
             this.PlBaseTemp = new System.Windows.Forms.Panel();
             this.RadBaseProcedure = new System.Windows.Forms.RadioButton();
             this.RadBaseModel = new System.Windows.Forms.RadioButton();
             this.RadBaseField = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CobSelectTemb.Properties)).BeginInit();
-            this.PlAutofacTemp.SuspendLayout();
+            this.plAutoDapperTemp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAutoDapper.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBrowser.Properties)).BeginInit();
             this.PlNhTemp.SuspendLayout();
+            this.PlAutofacTemp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CobSelectTemb.Properties)).BeginInit();
             this.PlBaseTemp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,12 +105,13 @@ namespace NapoleonCode.Win.DbForm
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.plAutoDapperTemp);
             this.groupBox2.Controls.Add(this.BtnReturn);
-            this.groupBox2.Controls.Add(this.BtnSubmit);
-            this.groupBox2.Controls.Add(this.CobSelectTemb);
-            this.groupBox2.Controls.Add(this.PlAutofacTemp);
             this.groupBox2.Controls.Add(this.RtxtContent);
             this.groupBox2.Controls.Add(this.PlNhTemp);
+            this.groupBox2.Controls.Add(this.BtnSubmit);
+            this.groupBox2.Controls.Add(this.PlAutofacTemp);
+            this.groupBox2.Controls.Add(this.CobSelectTemb);
             this.groupBox2.Controls.Add(this.PlBaseTemp);
             this.groupBox2.Location = new System.Drawing.Point(372, 14);
             this.groupBox2.Name = "groupBox2";
@@ -109,6 +119,63 @@ namespace NapoleonCode.Win.DbForm
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "生成代码";
+            // 
+            // plAutoDapperTemp
+            // 
+            this.plAutoDapperTemp.BackColor = System.Drawing.Color.Transparent;
+            this.plAutoDapperTemp.Controls.Add(this.labelControl2);
+            this.plAutoDapperTemp.Controls.Add(this.BtnBrowser);
+            this.plAutoDapperTemp.Controls.Add(this.labelControl1);
+            this.plAutoDapperTemp.Controls.Add(this.txtAutoDapper);
+            this.plAutoDapperTemp.Controls.Add(this.txtBrowser);
+            this.plAutoDapperTemp.Location = new System.Drawing.Point(203, 11);
+            this.plAutoDapperTemp.Name = "plAutoDapperTemp";
+            this.plAutoDapperTemp.Size = new System.Drawing.Size(882, 36);
+            this.plAutoDapperTemp.TabIndex = 7;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl2.Location = new System.Drawing.Point(549, 11);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(81, 14);
+            this.labelControl2.TabIndex = 11;
+            this.labelControl2.Text = "命名空间前缀:";
+            // 
+            // BtnBrowser
+            // 
+            this.BtnBrowser.AllowFocus = false;
+            this.BtnBrowser.Location = new System.Drawing.Point(469, 8);
+            this.BtnBrowser.Name = "BtnBrowser";
+            this.BtnBrowser.Size = new System.Drawing.Size(59, 23);
+            this.BtnBrowser.TabIndex = 9;
+            this.BtnBrowser.Text = "浏览";
+            this.BtnBrowser.Click += new System.EventHandler(this.BtnBrowser_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.Location = new System.Drawing.Point(3, 13);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(53, 14);
+            this.labelControl1.TabIndex = 1;
+            this.labelControl1.Text = "生成路径:";
+            // 
+            // txtAutoDapper
+            // 
+            this.txtAutoDapper.EditValue = "";
+            this.txtAutoDapper.Location = new System.Drawing.Point(633, 10);
+            this.txtAutoDapper.Name = "txtAutoDapper";
+            this.txtAutoDapper.Size = new System.Drawing.Size(224, 20);
+            this.txtAutoDapper.TabIndex = 10;
+            // 
+            // txtBrowser
+            // 
+            this.txtBrowser.Location = new System.Drawing.Point(59, 10);
+            this.txtBrowser.Name = "txtBrowser";
+            this.txtBrowser.Properties.ReadOnly = true;
+            this.txtBrowser.Size = new System.Drawing.Size(391, 20);
+            this.txtBrowser.TabIndex = 0;
             // 
             // BtnReturn
             // 
@@ -120,54 +187,9 @@ namespace NapoleonCode.Win.DbForm
             this.BtnReturn.Text = "返回";
             this.BtnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
-            // BtnSubmit
-            // 
-            this.BtnSubmit.AllowFocus = false;
-            this.BtnSubmit.Location = new System.Drawing.Point(1090, 21);
-            this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(59, 23);
-            this.BtnSubmit.TabIndex = 8;
-            this.BtnSubmit.Text = "生成";
-            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
-            // 
-            // CobSelectTemb
-            // 
-            this.CobSelectTemb.Location = new System.Drawing.Point(11, 27);
-            this.CobSelectTemb.Name = "CobSelectTemb";
-            this.CobSelectTemb.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CobSelectTemb.Properties.Items.AddRange(new object[] {
-            "基本模版",
-            "NHibernate模版",
-            "AutoFac模版"});
-            this.CobSelectTemb.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.CobSelectTemb.Size = new System.Drawing.Size(181, 20);
-            this.CobSelectTemb.TabIndex = 7;
-            this.CobSelectTemb.SelectedIndexChanged += new System.EventHandler(this.CobSelectTemb_SelectedIndexChanged);
-            // 
-            // PlAutofacTemp
-            // 
-            this.PlAutofacTemp.Controls.Add(this.RadAutofacXml);
-            this.PlAutofacTemp.Location = new System.Drawing.Point(198, 19);
-            this.PlAutofacTemp.Name = "PlAutofacTemp";
-            this.PlAutofacTemp.Size = new System.Drawing.Size(882, 36);
-            this.PlAutofacTemp.TabIndex = 6;
-            // 
-            // RadAutofacXml
-            // 
-            this.RadAutofacXml.AutoSize = true;
-            this.RadAutofacXml.Location = new System.Drawing.Point(19, 9);
-            this.RadAutofacXml.Name = "RadAutofacXml";
-            this.RadAutofacXml.Size = new System.Drawing.Size(73, 18);
-            this.RadAutofacXml.TabIndex = 0;
-            this.RadAutofacXml.TabStop = true;
-            this.RadAutofacXml.Text = "配置文件";
-            this.RadAutofacXml.UseVisualStyleBackColor = true;
-            this.RadAutofacXml.Click += new System.EventHandler(this.RadNhModel_Click);
-            // 
             // RtxtContent
             // 
-            this.RtxtContent.Location = new System.Drawing.Point(8, 62);
+            this.RtxtContent.Location = new System.Drawing.Point(6, 53);
             this.RtxtContent.Name = "RtxtContent";
             this.RtxtContent.Size = new System.Drawing.Size(1208, 700);
             this.RtxtContent.TabIndex = 5;
@@ -182,7 +204,7 @@ namespace NapoleonCode.Win.DbForm
             this.PlNhTemp.Controls.Add(this.RadNhMapping);
             this.PlNhTemp.Controls.Add(this.RadNhXml);
             this.PlNhTemp.Controls.Add(this.RadNhModel);
-            this.PlNhTemp.Location = new System.Drawing.Point(198, 15);
+            this.PlNhTemp.Location = new System.Drawing.Point(203, 11);
             this.PlNhTemp.Name = "PlNhTemp";
             this.PlNhTemp.Size = new System.Drawing.Size(881, 36);
             this.PlNhTemp.TabIndex = 3;
@@ -255,12 +277,58 @@ namespace NapoleonCode.Win.DbForm
             this.RadNhModel.UseVisualStyleBackColor = true;
             this.RadNhModel.Click += new System.EventHandler(this.RadNhModel_Click);
             // 
+            // BtnSubmit
+            // 
+            this.BtnSubmit.AllowFocus = false;
+            this.BtnSubmit.Location = new System.Drawing.Point(1090, 21);
+            this.BtnSubmit.Name = "BtnSubmit";
+            this.BtnSubmit.Size = new System.Drawing.Size(59, 23);
+            this.BtnSubmit.TabIndex = 8;
+            this.BtnSubmit.Text = "生成";
+            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
+            // 
+            // PlAutofacTemp
+            // 
+            this.PlAutofacTemp.Controls.Add(this.RadAutofacXml);
+            this.PlAutofacTemp.Location = new System.Drawing.Point(203, 11);
+            this.PlAutofacTemp.Name = "PlAutofacTemp";
+            this.PlAutofacTemp.Size = new System.Drawing.Size(882, 36);
+            this.PlAutofacTemp.TabIndex = 6;
+            // 
+            // RadAutofacXml
+            // 
+            this.RadAutofacXml.AutoSize = true;
+            this.RadAutofacXml.Location = new System.Drawing.Point(19, 9);
+            this.RadAutofacXml.Name = "RadAutofacXml";
+            this.RadAutofacXml.Size = new System.Drawing.Size(73, 18);
+            this.RadAutofacXml.TabIndex = 0;
+            this.RadAutofacXml.TabStop = true;
+            this.RadAutofacXml.Text = "配置文件";
+            this.RadAutofacXml.UseVisualStyleBackColor = true;
+            this.RadAutofacXml.Click += new System.EventHandler(this.RadNhModel_Click);
+            // 
+            // CobSelectTemb
+            // 
+            this.CobSelectTemb.Location = new System.Drawing.Point(11, 21);
+            this.CobSelectTemb.Name = "CobSelectTemb";
+            this.CobSelectTemb.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CobSelectTemb.Properties.Items.AddRange(new object[] {
+            "基本模版",
+            "NHibernate模版",
+            "AutoFac模版",
+            "AutoFac+Dapper文件"});
+            this.CobSelectTemb.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.CobSelectTemb.Size = new System.Drawing.Size(181, 20);
+            this.CobSelectTemb.TabIndex = 7;
+            this.CobSelectTemb.SelectedIndexChanged += new System.EventHandler(this.CobSelectTemb_SelectedIndexChanged);
+            // 
             // PlBaseTemp
             // 
             this.PlBaseTemp.Controls.Add(this.RadBaseProcedure);
             this.PlBaseTemp.Controls.Add(this.RadBaseModel);
             this.PlBaseTemp.Controls.Add(this.RadBaseField);
-            this.PlBaseTemp.Location = new System.Drawing.Point(198, 19);
+            this.PlBaseTemp.Location = new System.Drawing.Point(203, 11);
             this.PlBaseTemp.Name = "PlBaseTemp";
             this.PlBaseTemp.Size = new System.Drawing.Size(881, 36);
             this.PlBaseTemp.TabIndex = 2;
@@ -317,11 +385,14 @@ namespace NapoleonCode.Win.DbForm
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CodeForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CobSelectTemb.Properties)).EndInit();
-            this.PlAutofacTemp.ResumeLayout(false);
-            this.PlAutofacTemp.PerformLayout();
+            this.plAutoDapperTemp.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtAutoDapper.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBrowser.Properties)).EndInit();
             this.PlNhTemp.ResumeLayout(false);
             this.PlNhTemp.PerformLayout();
+            this.PlAutofacTemp.ResumeLayout(false);
+            this.PlAutofacTemp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CobSelectTemb.Properties)).EndInit();
             this.PlBaseTemp.ResumeLayout(false);
             this.PlBaseTemp.PerformLayout();
             this.ResumeLayout(false);
@@ -352,5 +423,11 @@ namespace NapoleonCode.Win.DbForm
         private DevExpress.XtraEditors.ComboBoxEdit CobSelectTemb;
         private DevExpress.XtraEditors.SimpleButton BtnReturn;
         private DevExpress.XtraEditors.SimpleButton BtnSubmit;
+        private Panel plAutoDapperTemp;
+        private DevExpress.XtraEditors.SimpleButton BtnBrowser;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.TextEdit txtBrowser;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit txtAutoDapper;
     }
 }

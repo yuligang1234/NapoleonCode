@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Text;
-using NapoleonCode.BLL;
 using NapoleonCode.Common;
 using NapoleonCode.Model;
 
@@ -9,34 +8,18 @@ namespace NapoleonCode.Win.MovingTemplate
     public class NhibernateTemplate
     {
 
-        private static readonly MsSqlService Bll = new MsSqlService();
-
-        /// <summary>
-        ///  公用DataTable
-        /// </summary>
-        /// <param name="appConfig">数据库配置类</param>
-        /// Author  : Napoleon
-        /// Created : 2014-09-25 10:31:18
-        private static DataTable GetTable(AppConfig appConfig)
-        {
-            string sql = string.Format("SELECT obj.name AS TableName ,col.colorder AS Id ,col.name AS TableColumn ,ISNULL(ep.[value], col.name) AS TableDesc ,t.name AS DataType ,col.length AS TypeLength ,ISNULL(COLUMNPROPERTY(col.id, col.name, 'Scale'), 0) AS DecimalLength ,CASE WHEN COLUMNPROPERTY(col.id, col.name, 'IsIdentity') = 1 THEN 'true' ELSE 'false' END AS IsFlag ,CASE WHEN EXISTS (SELECT 1 FROM dbo.sysindexes si INNER JOIN dbo.sysindexkeys sik ON si.id = sik.id INNER JOIN dbo.syscolumns sc ON sc.id = sik.id AND sc.colid = sik.colid INNER JOIN dbo.sysobjects so ON so.name = si.name AND so.xtype = 'PK' WHERE sc.id = col.id AND sc.colid = col.colid ) THEN 'true' ELSE 'false' END AS IsKey , CASE WHEN col.isnullable = 1 THEN 'true' ELSE 'false' END AS IsNull , ISNULL(comm.text, '') AS DefaultValue FROM dbo.syscolumns col LEFT OUTER JOIN dbo.systypes t ON col.xtype = t.xusertype INNER JOIN dbo.sysobjects obj ON col.id = obj.id AND obj.xtype = 'U' AND obj.status >= 0 LEFT OUTER JOIN dbo.syscomments comm ON col.cdefault = comm.id LEFT OUTER JOIN sys.extended_properties ep ON col.id = ep.major_id AND col.colid = ep.minor_id AND ep.name = 'MS_Description' LEFT OUTER JOIN sys.extended_properties epTwo ON obj.id = epTwo.major_id AND epTwo.minor_id = 0 AND epTwo.name ='MS_Description' WHERE obj.name = '{0}' ORDER BY  col.colorder", PublicFiled.TableName);
-            DataTable dataBaseTables = Bll.ExecuteSql(sql, appConfig, PublicFiled.DataBaseName);
-            return dataBaseTables;
-        }
 
         /// <summary>
         ///  NHibernate模版的实体类
         /// </summary>
-        /// <param name="appConfig">数据库配置类</param>
         /// Author  : Napoleon
         /// Created : 2014-09-25 10:01:16
-        public static string InsertNhibernateModel(AppConfig appConfig)
+        public static string InsertNhibernateModel(DataTable dt)
         {
             StringBuilder sb = new StringBuilder();
-            DataTable dataBaseTables = GetTable(appConfig);
-            if (dataBaseTables.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
-                foreach (DataRow row in dataBaseTables.Rows)
+                foreach (DataRow row in dt.Rows)
                 {
                     sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString()));//注释
                     sb.AppendFormat("public virtual {0} {1}{2}", PublicFun.MsSqlFormatType(1, row["DataType"].ToString()), row["TableColumn"], PublicFiled.WarpSymbol);
@@ -54,17 +37,15 @@ namespace NapoleonCode.Win.MovingTemplate
         /// <summary>
         ///  NHibernate模版的映射文件
         /// </summary>
-        /// <param name="appConfig">数据库配置类</param>
         /// Author  : Napoleon
         /// Created : 2014-09-26 09:53:28
-        public static string InsertNhibernateMapping(AppConfig appConfig)
+        public static string InsertNhibernateMapping(DataTable dt)
         {
             StringBuilder sb = new StringBuilder();
-            DataTable dataBaseTables = GetTable(appConfig);
             sb.AppendFormat("<?xml version=\"1.0\" encoding=\"utf-8\" ?>{0}", PublicFiled.WarpSymbol);
             sb.AppendFormat("<hibernate-mapping xmlns=\"urn:nhibernate-mapping-2.2\">{0}", PublicFiled.WarpSymbol);
             sb.AppendFormat("  <class name=\"{0}.{1}, {2}\" table=\"{3}\" lazy=\"false\">{4}", PublicFiled.NhMappingNameSpace, PublicFun.FormatTableName(PublicFiled.TableName), PublicFiled.NhNameSpace, PublicFiled.TableName, PublicFiled.WarpSymbol);
-            foreach (DataRow row in dataBaseTables.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 //主键
                 if (row["IsKey"].ToString().Equals("true"))

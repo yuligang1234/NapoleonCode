@@ -47,10 +47,10 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RtbContent = new System.Windows.Forms.RichTextBox();
-            this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
-            this.BtnReturn = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.BtnReturn = new DevExpress.XtraEditors.SimpleButton();
+            this.BtnSubmit = new DevExpress.XtraEditors.SimpleButton();
+            this.RtbContent = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -128,23 +128,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "代码生成";
             // 
-            // RtbContent
+            // labelControl1
             // 
-            this.RtbContent.Location = new System.Drawing.Point(9, 48);
-            this.RtbContent.Name = "RtbContent";
-            this.RtbContent.Size = new System.Drawing.Size(1078, 689);
-            this.RtbContent.TabIndex = 2;
-            this.RtbContent.Text = "";
-            // 
-            // BtnSubmit
-            // 
-            this.BtnSubmit.AllowFocus = false;
-            this.BtnSubmit.Location = new System.Drawing.Point(753, 17);
-            this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(64, 23);
-            this.BtnSubmit.TabIndex = 5;
-            this.BtnSubmit.Text = "生成";
-            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.Location = new System.Drawing.Point(101, 17);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(631, 25);
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = "在左侧的模版树中双击选择相应的模版，并点击右侧的生成按钮来生成需要的代码";
             // 
             // BtnReturn
             // 
@@ -156,15 +148,23 @@
             this.BtnReturn.Text = "返回";
             this.BtnReturn.Click += new System.EventHandler(this.BtnReturn_Click);
             // 
-            // labelControl1
+            // BtnSubmit
             // 
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Location = new System.Drawing.Point(101, 17);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(631, 25);
-            this.labelControl1.TabIndex = 7;
-            this.labelControl1.Text = "在左侧的模版树中双击选择相应的模版，并点击右侧的生成按钮来生成需要的代码";
+            this.BtnSubmit.AllowFocus = false;
+            this.BtnSubmit.Location = new System.Drawing.Point(753, 17);
+            this.BtnSubmit.Name = "BtnSubmit";
+            this.BtnSubmit.Size = new System.Drawing.Size(64, 23);
+            this.BtnSubmit.TabIndex = 5;
+            this.BtnSubmit.Text = "生成";
+            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
+            // 
+            // RtbContent
+            // 
+            this.RtbContent.Location = new System.Drawing.Point(6, 47);
+            this.RtbContent.Name = "RtbContent";
+            this.RtbContent.Size = new System.Drawing.Size(1078, 689);
+            this.RtbContent.TabIndex = 2;
+            this.RtbContent.Text = "";
             // 
             // StaticForm
             // 

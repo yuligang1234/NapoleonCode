@@ -88,5 +88,19 @@ namespace NapoleonCode.Common
         /// Created : 2014-10-21 14:27:35
         public static readonly char UrlSplit = '\\';
 
+        /// <summary>
+        ///  下划线分隔符
+        /// </summary>
+        /// Author  : Napoleon
+        /// Created : 2015-05-27 16:09:19
+        public static readonly char UnderLineSplit = '_';
+
+        /// <summary>
+        ///  逗号分隔符
+        /// </summary>
+        /// Author  : Napoleon
+        /// Created : 2015-05-27 16:28:11
+        public static readonly char CommaSplit = ',';
+
     }
 }

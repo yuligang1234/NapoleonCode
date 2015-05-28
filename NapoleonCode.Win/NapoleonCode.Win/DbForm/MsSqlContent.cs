@@ -34,6 +34,7 @@ namespace NapoleonCode.Win.DbForm
             PlBaseTemp.Visible = true;
             PlNhTemp.Visible = false;
             PlAutofacTemp.Visible = false;
+            plAutoDapperTemp.Visible = false;
         }
 
         /// <summary>
@@ -125,23 +126,31 @@ namespace NapoleonCode.Win.DbForm
         {
             //清除选中状态
             RadAutofacXml.Checked = RadBaseField.Checked = RadBaseModel.Checked = RadBaseProcedure.Checked = RadNhMapping.Checked = RadNhModel.Checked = RadNhXml.Checked = false;
-            if (CobSelectTemb.SelectedIndex == 0)//基础模版
+            txtBrowser.Text = "";//路径清空
+            RtxtContent.Clear();//清除样式
+            PublicFiled.MovingTemplateName = "";
+            switch (CobSelectTemb.SelectedIndex)
             {
-                PlBaseTemp.Visible = true;
-                PlNhTemp.Visible = PlAutofacTemp.Visible = false;
-            }
-            else if (CobSelectTemb.SelectedIndex == 1)//NHibernate模版
-            {
-                PlNhTemp.Visible = true;
-                PlBaseTemp.Visible = PlAutofacTemp.Visible = false;
-                //加载对应的命名空间
-                TxtNhMapping.Text = PublicFun.GetAppConfig("NhMappingNameSpace");
-                TxtNhModel.Text = PublicFun.GetAppConfig("NhNameSpace");
-            }
-            else if (CobSelectTemb.SelectedIndex == 2)//AutoFac模版
-            {
-                PlAutofacTemp.Visible = true;
-                PlBaseTemp.Visible = PlNhTemp.Visible = false;
+                case 0://基础模版
+                    PlBaseTemp.Visible = true;
+                    PlNhTemp.Visible = PlAutofacTemp.Visible = plAutoDapperTemp.Visible = false;
+                    break;
+                case 1://NHibernate模版
+                    PlNhTemp.Visible = true;
+                    PlBaseTemp.Visible = PlAutofacTemp.Visible = plAutoDapperTemp.Visible = false;
+                    //加载对应的命名空间
+                    TxtNhMapping.Text = PublicFun.GetAppConfig("NhMappingNameSpace");
+                    TxtNhModel.Text = PublicFun.GetAppConfig("NhNameSpace");
+                    break;
+                case 2://AutoFac模版
+                    PlAutofacTemp.Visible = true;
+                    PlBaseTemp.Visible = PlNhTemp.Visible = plAutoDapperTemp.Visible = false;
+                    break;
+                case 3://AutoFac+Dapper文件
+                    plAutoDapperTemp.Visible = true;
+                    PlBaseTemp.Visible = PlNhTemp.Visible = PlAutofacTemp.Visible = false;
+                    txtAutoDapper.Text = PublicFun.GetAppConfig("AutoDapperSpace");
+                    break;
             }
         }
 
@@ -159,22 +168,26 @@ namespace NapoleonCode.Win.DbForm
                     //映射文件和类的命名空间
                     PublicFiled.NhMappingNameSpace = TxtNhMapping.Text;
                     PublicFiled.NhNameSpace = TxtNhModel.Text;
-                    RtxtContent.Clear();//清除样式
+                    DataTable dt = PublicTemplate.GetTable(_appConfig);//数据库表查询信息
                     switch (PublicFiled.MovingTemplateName)
                     {
-                        case "RadBaseField"://基础模版的字段
-                            RtxtContent.Text = BaseTemplate.InsertBaseField(_appConfig);
+                        case "RadBaseField":
+                            RtxtContent.Text = BaseTemplate.InsertBaseField(dt);
                             break;
                         case "RadBaseModel"://基础模版的实体类
-                            RtxtContent.Text = BaseTemplate.InsertBaseModel(_appConfig);
+                            RtxtContent.Clear();//清除样式
+                            RtxtContent.Text = BaseTemplate.InsertBaseModel(dt);
                             break;
                         case "RadBaseProcedure"://基础模版的存储过程
-                            RtxtContent.Text = BaseTemplate.InsertBaseProcedure(_appConfig);
+                            RtxtContent.Clear();//清除样式
+                            RtxtContent.Text = BaseTemplate.InsertBaseProcedure(dt);
                             break;
                         case "RadNhModel"://NHibernate模版的实体类
-                            RtxtContent.Text = NhibernateTemplate.InsertNhibernateModel(_appConfig);
+                            RtxtContent.Clear();//清除样式
+                            RtxtContent.Text = NhibernateTemplate.InsertNhibernateModel(dt);
                             break;
                         case "RadNhMapping"://NHibernate模版的映射文件
+                            RtxtContent.Clear();//清除样式
                             //保存设置
                             if (string.IsNullOrEmpty(TxtNhMapping.Text) || string.IsNullOrEmpty(TxtNhModel.Text))
                             {
@@ -185,26 +198,76 @@ namespace NapoleonCode.Win.DbForm
                             {
                                 PublicFun.SaveAppConfig("NhMappingNameSpace", PublicFiled.NhMappingNameSpace);
                                 PublicFun.SaveAppConfig("NhNameSpace", PublicFiled.NhNameSpace);
-                                RtxtContent.Text = NhibernateTemplate.InsertNhibernateMapping(_appConfig);
+                                RtxtContent.Text = NhibernateTemplate.InsertNhibernateMapping(dt);
                             }
                             break;
                         case "RadNhXml"://NHibernate模版的配置文件
+                            RtxtContent.Clear();//清除样式
                             RtxtContent.Text = NhibernateTemplate.InsertNhiberanteXml(_appConfig);
                             RtxtContent.Find("该配置为MSSQL下的配置，更换数据库请修改对应的dialect、driver_class属性");
                             RtxtContent.SelectionFont = new Font("", 12, FontStyle.Bold);
                             RtxtContent.SelectionColor = Color.Red;
                             break;
                         case "RadAutofacXml"://Autofac模版的配置文件
+                            RtxtContent.Clear();//清除样式
                             RtxtContent.Text = AutofacTemplate.InsertAutofacXml(_appConfig);
                             RtxtContent.Find("新建配置文件AuthConfig.cs，将配置写入进去，并在Application_Start()中启用");
                             RtxtContent.SelectionFont = new Font("", 12, FontStyle.Bold);
                             RtxtContent.SelectionColor = Color.Red;
                             break;
+                        case "AutoDapper"://AutoFac+Dapper文件
+
+                            #region DAL文件
+
+                            string namespaces = txtAutoDapper.Text + ".DAL";
+                            string tableModel = PublicTemplate.SwitchTableName(dt.Rows[0][0].ToString());
+                            string filePath = txtBrowser.Text + "\\" + tableModel + "Dao.cs";
+                            string content = AutoDapperTemplate.CompleteDao(namespaces, tableModel, dt);
+                            FileFunc.OperateFile(filePath, content);
+                            RtxtContent.AppendText(filePath);
+                            RtxtContent.AppendText("\r\n");
+
+                            #endregion
+
+                            #region IDAL文件
+
+                            namespaces = txtAutoDapper.Text + ".IDAL";
+                            filePath = txtBrowser.Text + "\\" + "I" + tableModel + "Dao.cs";
+                            content = AutoDapperTemplate.CompleteIDao(namespaces, tableModel, dt);
+                            FileFunc.OperateFile(filePath, content);
+                            RtxtContent.AppendText(filePath);
+                            RtxtContent.AppendText("\r\n");
+
+                            #endregion
+
+                            #region BLL文件
+
+                            namespaces = txtAutoDapper.Text + ".BLL";
+                            filePath = txtBrowser.Text + "\\" + tableModel + "Service.cs";
+                            content = AutoDapperTemplate.CompleteService(namespaces, tableModel, dt);
+                            FileFunc.OperateFile(filePath, content);
+                            RtxtContent.AppendText(filePath);
+                            RtxtContent.AppendText("\r\n");
+
+                            #endregion
+
+                            #region IBLL文件
+
+                            namespaces = txtAutoDapper.Text + ".IBLL";
+                            filePath = txtBrowser.Text + "\\" + "I" + tableModel + "Service.cs";
+                            content = AutoDapperTemplate.CompleteIService(namespaces, tableModel, dt);
+                            FileFunc.OperateFile(filePath, content);
+                            RtxtContent.AppendText(filePath);
+                            RtxtContent.AppendText("\r\n");
+
+                            #endregion
+
+                            break;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请选择需要使用的模版！");
+                    MessageBox.Show("请选择需要使用的模版或者选择生成路径！");
                 }
             }
             else
@@ -239,8 +302,23 @@ namespace NapoleonCode.Win.DbForm
             form.Show();
         }
 
-
-
+        /// <summary>
+        ///  选择生成路径
+        /// </summary>
+        /// Author  : Napoleon
+        /// Created : 2015-05-27 14:20:03
+        private void BtnBrowser_Click(object sender, System.EventArgs e)
+        {
+            PublicFiled.MovingTemplateName = "AutoDapper";
+            using (FolderBrowserDialog folder = new FolderBrowserDialog())
+            {
+                folder.ShowNewFolderButton = true;
+                if (folder.ShowDialog() == DialogResult.OK)
+                {
+                    txtBrowser.Text = folder.SelectedPath;
+                }
+            }
+        }
 
 
     }

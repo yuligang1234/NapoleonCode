@@ -11,6 +11,7 @@ namespace NapoleonCode.Win
 
         public SelectDbForm()
         {
+            ApplySkin("McSkin");
             InitializeComponent();
         }
 
