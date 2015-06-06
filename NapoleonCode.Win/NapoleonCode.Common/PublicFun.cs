@@ -64,20 +64,38 @@ namespace NapoleonCode.Common
         ///  注释
         /// </summary>
         /// <param name="tableDesc"></param>
+        /// <param name="i">tab个数</param>
         /// Author  : Napoleon
         /// Created : 2014-09-25 11:15:59
-        public static string GetCommentary(string tableDesc)
+        public static string GetCommentary(string tableDesc, int i = 0)
         {
+            string tab = GetTabCount(i);
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("/// <summary>{0}", PublicFiled.WarpSymbol);
-            sb.AppendFormat("///  {0}{1}", tableDesc, PublicFiled.WarpSymbol);
-            sb.AppendFormat("/// </summary>{0}", PublicFiled.WarpSymbol);
-            sb.AppendFormat("/// Author  :{0}{1}", PublicFiled.UserName, PublicFiled.WarpSymbol);
+            sb.AppendFormat("{0}/// <summary>{1}", tab, PublicFiled.WarpSymbol);
+            sb.AppendFormat("{0}///  {1}{2}", tab, tableDesc, PublicFiled.WarpSymbol);
+            sb.AppendFormat("{0}/// </summary>{1}", tab, PublicFiled.WarpSymbol);
+            sb.AppendFormat("{0}/// Author  :{1}{2}", tab, PublicFiled.UserName, PublicFiled.WarpSymbol);
             if (!string.IsNullOrWhiteSpace(PublicFiled.CompanyName))
             {
-                sb.AppendFormat("/// Company  :{0}{1}", PublicFiled.CompanyName, PublicFiled.WarpSymbol);
+                sb.AppendFormat("{0}/// Company  :{1}{2}", tab, PublicFiled.CompanyName, PublicFiled.WarpSymbol);
             }
-            sb.AppendFormat("/// Created :{0}{1}", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), PublicFiled.WarpSymbol);
+            sb.AppendFormat("{0}/// Created :{1}{2}", tab, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), PublicFiled.WarpSymbol);
+            return sb.ToString();
+        }
+
+        /// <summary>
+        ///  获取tab的个数
+        /// </summary>
+        /// <param name="i">The i.</param>
+        /// Author  : Napoleon
+        /// Created : 2015-06-06 14:39:53
+        private static string GetTabCount(int i)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int m = 0; m < i; m++)
+            {
+                sb.AppendFormat("{0}", PublicFiled.TabSymbol);
+            }
             return sb.ToString();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using NapoleonCode.Common;
 using NapoleonCode.BLL;
@@ -13,6 +14,7 @@ namespace NapoleonCode.Win.DbForm
 
         private readonly MsSqlService _bll = new MsSqlService();
         private readonly AppConfig _appConfig;
+        private SynchronizationContext _sysContext;//UI线程同步上下文
 
         public MsSqlContent()
         {
@@ -21,6 +23,7 @@ namespace NapoleonCode.Win.DbForm
             InitializeComponent();
             LoadTree();
             LoadForm();
+            _sysContext = SynchronizationContext.Current;//获取UI线程同步上下文
         }
 
         /// <summary>
@@ -78,6 +81,18 @@ namespace NapoleonCode.Win.DbForm
         private void CodeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        ///  返回
+        /// </summary>
+        /// Author  : Napoleon
+        /// Created : 2014-09-29 13:32:31
+        private void BtnReturn_Click(object sender, System.EventArgs e)
+        {
+            MsSqlForm form = new MsSqlForm();
+            Hide();
+            form.Show();
         }
 
         /// <summary>
@@ -216,52 +231,8 @@ namespace NapoleonCode.Win.DbForm
                             RtxtContent.SelectionColor = Color.Red;
                             break;
                         case "AutoDapper"://AutoFac+Dapper文件
-
-                            #region DAL文件
-
-                            string namespaces = txtAutoDapper.Text + ".DAL";
-                            string tableModel = PublicTemplate.SwitchTableName(dt.Rows[0][0].ToString());
-                            string filePath = txtBrowser.Text + "\\" + tableModel + "Dao.cs";
-                            string content = AutoDapperTemplate.CompleteDao(namespaces, tableModel, dt);
-                            FileFunc.OperateFile(filePath, content);
-                            RtxtContent.AppendText(filePath);
-                            RtxtContent.AppendText("\r\n");
-
-                            #endregion
-
-                            #region IDAL文件
-
-                            namespaces = txtAutoDapper.Text + ".IDAL";
-                            filePath = txtBrowser.Text + "\\" + "I" + tableModel + "Dao.cs";
-                            content = AutoDapperTemplate.CompleteIDao(namespaces, tableModel, dt);
-                            FileFunc.OperateFile(filePath, content);
-                            RtxtContent.AppendText(filePath);
-                            RtxtContent.AppendText("\r\n");
-
-                            #endregion
-
-                            #region BLL文件
-
-                            namespaces = txtAutoDapper.Text + ".BLL";
-                            filePath = txtBrowser.Text + "\\" + tableModel + "Service.cs";
-                            content = AutoDapperTemplate.CompleteService(namespaces, tableModel, dt);
-                            FileFunc.OperateFile(filePath, content);
-                            RtxtContent.AppendText(filePath);
-                            RtxtContent.AppendText("\r\n");
-
-                            #endregion
-
-                            #region IBLL文件
-
-                            namespaces = txtAutoDapper.Text + ".IBLL";
-                            filePath = txtBrowser.Text + "\\" + "I" + tableModel + "Service.cs";
-                            content = AutoDapperTemplate.CompleteIService(namespaces, tableModel, dt);
-                            FileFunc.OperateFile(filePath, content);
-                            RtxtContent.AppendText(filePath);
-                            RtxtContent.AppendText("\r\n");
-
-                            #endregion
-
+                            Thread thread = new Thread(new ThreadStart(this.CreateAutoDapperCs));
+                            thread.Start();
                             break;
                     }
                 }
@@ -291,18 +262,6 @@ namespace NapoleonCode.Win.DbForm
         }
 
         /// <summary>
-        ///  返回
-        /// </summary>
-        /// Author  : Napoleon
-        /// Created : 2014-09-29 13:32:31
-        private void BtnReturn_Click(object sender, System.EventArgs e)
-        {
-            MsSqlForm form = new MsSqlForm();
-            Hide();
-            form.Show();
-        }
-
-        /// <summary>
         ///  选择生成路径
         /// </summary>
         /// Author  : Napoleon
@@ -318,6 +277,68 @@ namespace NapoleonCode.Win.DbForm
                     txtBrowser.Text = folder.SelectedPath;
                 }
             }
+        }
+
+        /// <summary>
+        ///  生成autofac+dapper文件
+        /// </summary>
+        /// Author  : Napoleon
+        /// Created : 2015-06-06 13:58:45
+        private void CreateAutoDapperCs()
+        {
+            DataTable dt = PublicTemplate.GetTable(_appConfig);//数据库表查询信息
+            string tableModel = PublicTemplate.ComposeTableName(dt.Rows[0][0].ToString());
+            string namespaces = txtAutoDapper.Text;
+
+            #region DAL文件
+
+            string filePath = txtBrowser.Text + "\\" + tableModel + "Dao.cs";
+            string content = AutoDapperTemplate.CompleteDao(namespaces, tableModel, dt);
+            FileFunc.OperateFile(filePath, content);
+            //在线程中更新UI（通过UI线程同步上下文_sysContext）
+            _sysContext.Post(AppendToText, filePath);
+
+            #endregion
+
+            #region IDAL文件
+
+            filePath = txtBrowser.Text + "\\" + "I" + tableModel + "Dao.cs";
+            content = AutoDapperTemplate.CompleteIDao(namespaces, tableModel, dt);
+            FileFunc.OperateFile(filePath, content);
+            _sysContext.Post(AppendToText, filePath);
+
+            #endregion
+
+            #region BLL文件
+
+            filePath = txtBrowser.Text + "\\" + tableModel + "Service.cs";
+            content = AutoDapperTemplate.CompleteService(namespaces, tableModel, dt);
+            FileFunc.OperateFile(filePath, content);
+            _sysContext.Post(AppendToText, filePath);
+
+            #endregion
+
+            #region IBLL文件
+
+            filePath = txtBrowser.Text + "\\" + "I" + tableModel + "Service.cs";
+            content = AutoDapperTemplate.CompleteIService(namespaces, tableModel, dt);
+            FileFunc.OperateFile(filePath, content);
+            _sysContext.Post(AppendToText, filePath);
+
+            #endregion
+
+        }
+
+        /// <summary>
+        ///  实时显示导出情况
+        /// </summary>
+        /// <param name="value"></param>
+        /// Author  : Napoleon
+        /// Created : 2015-06-06 13:59:29
+        private void AppendToText(object value)
+        {
+            RtxtContent.AppendText(value.ToString());
+            RtxtContent.AppendText("\r\n");
         }
 
 

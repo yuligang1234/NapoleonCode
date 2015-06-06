@@ -1,5 +1,4 @@
 ﻿
-
 using System.Data;
 using System.Text;
 using NapoleonCode.Common;
@@ -21,9 +20,9 @@ namespace NapoleonCode.Win.MovingTemplate
         {
             StringBuilder top = new StringBuilder();
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("using System.Data;{0}using System.Data.SqlClient;{0}using System.Text;{0}using Napoleon.Db;{0}", PublicFiled.WarpSymbol);
+            top.AppendFormat("using System.Data;{0}using System.Data.SqlClient;{0}using System.Text;{0}using Napoleon.Db;using {1};{0}", PublicFiled.WarpSymbol, namespaces + ".IDAL");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("namespace {0}{1}", namespaces, PublicFiled.WarpSymbol);
+            top.AppendFormat("namespace {0}{1}", namespaces + ".DAL", PublicFiled.WarpSymbol);
             top.Append("{");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}public class {1}Dao : I{1}Dao{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
@@ -52,7 +51,7 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 查询
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据", 2)); //注释
                 content.AppendFormat("{0}{0}public DataTable Get{1}Table (string id){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
@@ -81,7 +80,7 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 新增
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据", 2)); //注释
                 content.AppendFormat("{0}{0}public int Insert{1} ({1} model){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
@@ -96,7 +95,7 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 更新
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据", 2)); //注释
                 content.AppendFormat("{0}{0}public int Update{1} ({1} model){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
@@ -111,7 +110,7 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 删除
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据", 2)); //注释
                 content.AppendFormat("{0}{0}public int Delete{1} (string id){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
@@ -147,7 +146,7 @@ namespace NapoleonCode.Win.MovingTemplate
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("using System.Data;{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("namespace {0}{1}", namespaces, PublicFiled.WarpSymbol);
+            top.AppendFormat("namespace {0}{1}", namespaces + ".IDAL", PublicFiled.WarpSymbol);
             top.Append("{");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}public interface I{1}Dao ", PublicFiled.TabSymbol, dbName);
@@ -175,28 +174,28 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 查询
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据", 2)); //注释
                 content.AppendFormat("{0}{0}DataTable Get{1}Table (string id);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 新增
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据", 2)); //注释
                 content.AppendFormat("{0}{0}int Insert{1} ({1} model);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 更新
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据", 2)); //注释
                 content.AppendFormat("{0}{0}int Update{1} ({1} model);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 删除
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据", 2)); //注释
                 content.AppendFormat("{0}{0}int Delete{1} (string id);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
@@ -217,8 +216,8 @@ namespace NapoleonCode.Win.MovingTemplate
         {
             StringBuilder top = new StringBuilder();
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("using System.Data;{0}{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("namespace {0}{1}", namespaces, PublicFiled.WarpSymbol);
+            top.AppendFormat("using System.Data;using {0};{1}{1}", namespaces + ".IBLL", PublicFiled.WarpSymbol);
+            top.AppendFormat("namespace {0}{1}", namespaces + ".BLL", PublicFiled.WarpSymbol);
             top.Append("{");
             top.AppendFormat("{0}{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}public class {1}Service : I{1}Service{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
@@ -254,48 +253,48 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 查询
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据", 2)); //注释
                 content.AppendFormat("{0}{0}public DataTable Get{1}Table (string id){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
-                content.AppendFormat("{0}{0}{0}return _{1}Dao.Get{2}Table (string id);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
-                content.Append("\t\t};");
+                content.AppendFormat("{0}{0}{0}return _{1}Dao.Get{2}Table (id);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
+                content.Append("\t\t}");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 新增
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据", 2)); //注释
                 content.AppendFormat("{0}{0}public int Insert{1} ({1} model){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
-                content.AppendFormat("{0}{0}{0}return _{1}Dao.Insert{2} ({2} model);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
-                content.Append("\t\t};");
+                content.AppendFormat("{0}{0}{0}return _{1}Dao.Insert{2} (model);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
+                content.Append("\t\t}");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 更新
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据", 2)); //注释
                 content.AppendFormat("{0}{0}public int Update{1} ({1} model){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
-                content.AppendFormat("{0}{0}{0}return _{1}Dao.Update{2} ({2} model);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
-                content.Append("\t\t};");
+                content.AppendFormat("{0}{0}{0}return _{1}Dao.Update{2} (model);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
+                content.Append("\t\t}");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 删除
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据", 2)); //注释
                 content.AppendFormat("{0}{0}public int Delete{1} (string id){2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
                 content.Append("\t\t{");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
-                content.AppendFormat("{0}{0}{0}return _{1}Dao.Delete{2} (string id);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
-                content.Append("\t\t};");
+                content.AppendFormat("{0}{0}{0}return _{1}Dao.Delete{2} (id);{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
+                content.Append("\t\t}");
                 content.AppendFormat("{0}", PublicFiled.WarpSymbol);
 
                 #endregion
@@ -318,7 +317,7 @@ namespace NapoleonCode.Win.MovingTemplate
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("using System.Data;{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("namespace {0}{1}", namespaces, PublicFiled.WarpSymbol);
+            top.AppendFormat("namespace {0}{1}", namespaces + ".IBLL", PublicFiled.WarpSymbol);
             top.Append("{");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}public interface I{1}Service ", PublicFiled.TabSymbol, dbName);
@@ -346,28 +345,28 @@ namespace NapoleonCode.Win.MovingTemplate
 
                 #region 查询
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("查询数据", 2)); //注释
                 content.AppendFormat("{0}{0}DataTable Get{1}Table (string id);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 新增
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("新增数据", 2)); //注释
                 content.AppendFormat("{0}{0}int Insert{1} ({1} model);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 更新
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("更新数据", 2)); //注释
                 content.AppendFormat("{0}{0}int Update{1} ({1} model);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion
 
                 #region 删除
 
-                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据")); //注释
+                content.AppendFormat("{0}{1}", PublicFiled.WarpSymbol, PublicFun.GetCommentary("删除数据", 2)); //注释
                 content.AppendFormat("{0}{0}int Delete{1} (string id);{2}", PublicFiled.TabSymbol, dbName, PublicFiled.WarpSymbol);
 
                 #endregion

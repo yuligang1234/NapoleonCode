@@ -45,6 +45,22 @@ namespace NapoleonCode.Win.MovingTemplate
         }
 
         /// <summary>
+        ///  将News_Table组合成NewsTable
+        /// </summary>
+        /// <param name="tableName">tableName</param>
+        /// Author  : Napoleon
+        /// Created : 2015-06-06 11:16:43
+        public static string ComposeTableName(string tableName)
+        {
+            string[] table = tableName.Split(PublicFiled.UnderLineSplit);
+            if (table.Length > 1)
+            {
+                return table[0] + table[1];
+            }
+            return tableName;
+        }
+
+        /// <summary>
         ///  返回字段
         /// </summary>
         /// Author  : Napoleon
