@@ -23,7 +23,6 @@ namespace NapoleonCode.Win.MovingTemplate
             StringBuilder sb = new StringBuilder();
             if (dt.Rows.Count > 0)
             {
-                sb.AppendFormat("#region{0}", PublicFiled.WarpSymbol);
                 sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
                 foreach (DataRow row in dt.Rows)
                 {
@@ -32,7 +31,6 @@ namespace NapoleonCode.Win.MovingTemplate
                         PublicFiled.WarpSymbol);
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
                 }
-                sb.AppendFormat("#endregion{0}", PublicFiled.WarpSymbol);
             }
             return sb.ToString();
         }
@@ -50,19 +48,18 @@ namespace NapoleonCode.Win.MovingTemplate
                 foreach (DataRow row in dt.Rows)
                 {
                     //私有属性,_+首字母小写
-                    string privateStr = string.Format("_{0}{1}", row["TableColumn"].ToString().ToLower().Substring(0, 1),
-                        row["TableColumn"].ToString().Substring(1));
-                    sb.AppendFormat("private {0} {1};{2}", PublicFun.MsSqlFormatType(0, row["DataType"].ToString()),
-                        privateStr, PublicFiled.WarpSymbol);
-                    sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString())); //注释
-                    sb.AppendFormat("public {0} {1}{2}", PublicFun.MsSqlFormatType(0, row["DataType"].ToString()),
-                        row["TableColumn"], PublicFiled.WarpSymbol);
+                    string privateStr = string.Format("_{0}{1}", row["TableColumn"].ToString().ToLower().Substring(0, 1), row["TableColumn"].ToString().Substring(1));
+                    sb.AppendFormat("{3}{3}private {0} {1};{2}", PublicFun.MsSqlFormatType(0, row["DataType"].ToString()), privateStr, PublicFiled.WarpSymbol, PublicFiled.TabSymbol);
+                    sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString(), 2)); //注释
+                    sb.AppendFormat("{3}{3}public {0} {1}{2}", PublicFun.MsSqlFormatType(0, row["DataType"].ToString()), row["TableColumn"], PublicFiled.WarpSymbol, PublicFiled.TabSymbol);
+                    sb.AppendFormat("{0}{0}", PublicFiled.TabSymbol);
                     sb.Append("{");
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
-                    sb.AppendFormat("{0}get {1} return {2};{3}{4}", PublicFiled.TabSymbol, "{", privateStr, "}",
+                    sb.AppendFormat("{0}{0}{0}get {1} return {2};{3}{4}", PublicFiled.TabSymbol, "{", privateStr, "}",
                         PublicFiled.WarpSymbol);
-                    sb.AppendFormat("{0}set {1} {2} = value;{3}{4}", PublicFiled.TabSymbol, "{", privateStr, "}",
+                    sb.AppendFormat("{0}{0}{0}set {1} {2} = value;{3}{4}", PublicFiled.TabSymbol, "{", privateStr, "}",
                         PublicFiled.WarpSymbol);
+                    sb.AppendFormat("{0}{0}", PublicFiled.TabSymbol);
                     sb.Append("}");
                     sb.AppendFormat("{0}{0}", PublicFiled.WarpSymbol);
                 }

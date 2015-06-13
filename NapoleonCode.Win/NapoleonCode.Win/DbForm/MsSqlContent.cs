@@ -102,18 +102,19 @@ namespace NapoleonCode.Win.DbForm
         /// Created : 2014-08-27 16:54:33
         private void TreeDataBase_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Level == 1)
+            if (e.Node.Level == 1)//双击数据库
             {
                 e.Node.SelectedImageIndex = 2;
                 e.Node.Nodes.Clear();
                 e.Node.Nodes.Add("U", "用户表", 0);
                 LoadChildrenTree(e.Node.Text, e.Node.Nodes["U"]);
+                PublicFiled.DataBaseName = e.Node.Text;
+                PublicFiled.TableName = "";
             }
             else
             {
                 if (e.Node.Level == 3)//双击数据库表获取其名称
                 {
-                    PublicFiled.DataBaseName = e.Node.Parent.Parent.Text;
                     PublicFiled.TableName = e.Node.Text;
                 }
             }
@@ -141,7 +142,7 @@ namespace NapoleonCode.Win.DbForm
         {
             //清除选中状态
             RadAutofacXml.Checked = RadBaseField.Checked = RadBaseModel.Checked = RadBaseProcedure.Checked = RadNhMapping.Checked = RadNhModel.Checked = RadNhXml.Checked = false;
-            txtBrowser.Text = "";//路径清空
+            //txtBrowser.Text = "";//路径清空
             RtxtContent.Clear();//清除样式
             PublicFiled.MovingTemplateName = "";
             switch (CobSelectTemb.SelectedIndex)
@@ -176,14 +177,14 @@ namespace NapoleonCode.Win.DbForm
         /// Created : 2014-09-25 11:13:20
         private void BtnSubmit_Click(object sender, System.EventArgs e)
         {
-            if (!string.IsNullOrEmpty(PublicFiled.DataBaseName))
+            if (!string.IsNullOrEmpty(PublicFiled.TableName))
             {
                 if (!string.IsNullOrEmpty(PublicFiled.MovingTemplateName))
                 {
                     //映射文件和类的命名空间
                     PublicFiled.NhMappingNameSpace = TxtNhMapping.Text;
                     PublicFiled.NhNameSpace = TxtNhModel.Text;
-                    DataTable dt = PublicTemplate.GetTable(_appConfig);//数据库表查询信息
+                    DataTable dt = PublicTemplate.GetTable(_appConfig, PublicFiled.TableName);//数据库表查询信息
                     switch (PublicFiled.MovingTemplateName)
                     {
                         case "RadBaseField":
@@ -231,7 +232,7 @@ namespace NapoleonCode.Win.DbForm
                             RtxtContent.SelectionColor = Color.Red;
                             break;
                         case "AutoDapper"://AutoFac+Dapper文件
-                            Thread thread = new Thread(new ThreadStart(this.CreateAutoDapperCs));
+                            Thread thread = new Thread(CreateAutoDapperCs);
                             thread.Start();
                             break;
                     }
@@ -286,7 +287,7 @@ namespace NapoleonCode.Win.DbForm
         /// Created : 2015-06-06 13:58:45
         private void CreateAutoDapperCs()
         {
-            DataTable dt = PublicTemplate.GetTable(_appConfig);//数据库表查询信息
+            DataTable dt = PublicTemplate.GetTable(_appConfig, PublicFiled.TableName);//数据库表查询信息
             string tableModel = PublicTemplate.ComposeTableName(dt.Rows[0][0].ToString());
             string namespaces = txtAutoDapper.Text;
 
@@ -339,6 +340,85 @@ namespace NapoleonCode.Win.DbForm
         {
             RtxtContent.AppendText(value.ToString());
             RtxtContent.AppendText("\r\n");
+        }
+
+        /// <summary>
+        ///  导出功能
+        /// </summary>
+        /// Author  : Napoleon
+        /// Created : 2015-06-13 13:59:00
+        private void BtnExport_Click(object sender, System.EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PublicFiled.DataBaseName))
+            {
+                MessageBox.Show("请双击选择需要使用的数据库表！");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(txtBrowser.Text))
+            {
+                MessageBox.Show("请在Autofac+Dapper文件中选择导出路径！");
+                return;
+            }
+            if (!PublicFiled.MovingTemplateName.Equals("RadBaseModel") && !PublicFiled.MovingTemplateName.Equals("RadNhModel") && !PublicFiled.MovingTemplateName.Equals("RadNhMapping"))
+            {
+                MessageBox.Show("导出功能只对基础模版实体类、NHibernate模版的实体类/映射文件有效！");
+                return;
+            }
+            if (string.IsNullOrEmpty(TxtNhMapping.Text) || string.IsNullOrEmpty(TxtNhModel.Text))
+            {
+                MessageBox.Show("请填写对应的命名空间！");
+                return;
+            }
+            DataTable dt;
+            if (string.IsNullOrWhiteSpace(PublicFiled.TableName))//批量导出该数据库下的所有表
+            {
+                dt = _bll.GetTreeView(_appConfig, PublicFiled.DataBaseName, "U");//所有数据库表
+                foreach (DataRow row in dt.Rows)
+                {
+                    dt = PublicTemplate.GetTable(_appConfig, row[0].ToString());
+                    ExportSingleFile(dt);
+                }
+            }
+            else//导出单个的数据库表
+            {
+                dt = PublicTemplate.GetTable(_appConfig, PublicFiled.TableName);//数据库表查询信息
+                ExportSingleFile(dt);
+            }
+        }
+
+        /// <summary>
+        ///  导出单个文件
+        /// </summary>
+        /// <param name="dt">The dt.</param>
+        /// Author  : Napoleon
+        /// Created : 2015-06-13 15:27:26
+        private void ExportSingleFile(DataTable dt)
+        {
+            string filePath = txtBrowser.Text,
+                content = "",
+                tableModel = PublicTemplate.ComposeTableName(dt.Rows[0][0].ToString()),
+                namespaces = txtAutoDapper.Text;
+            switch (PublicFiled.MovingTemplateName)
+            {
+                case "RadBaseModel"://基础模版的实体类
+                    filePath += "\\" + tableModel + ".cs";
+                    namespaces += ".Model";
+                    content = ExportTemplate.ExportModel(namespaces, tableModel, BaseTemplate.InsertBaseModel(dt));
+                    break;
+                case "RadNhModel"://NHibernate模版的实体类
+                    filePath += "\\" + tableModel + ".cs";
+                    namespaces += ".Model.Entities";
+                    content = ExportTemplate.ExportModel(namespaces, tableModel, NhibernateTemplate.InsertNhibernateModel(dt));
+                    break;
+                case "RadNhMapping"://NHibernate模版的映射文件
+                    filePath += "\\" + tableModel + ".hbm.xml";
+                    PublicFiled.NhMappingNameSpace = TxtNhMapping.Text;
+                    PublicFiled.NhNameSpace = TxtNhModel.Text;
+                    content = NhibernateTemplate.InsertNhibernateMapping(dt);
+                    break;
+            }
+            FileFunc.OperateFile(filePath, content);
+            _sysContext.Post(AppendToText, filePath);
         }
 
 

@@ -20,7 +20,7 @@ namespace NapoleonCode.Win.MovingTemplate
         {
             StringBuilder top = new StringBuilder();
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("using System.Data;{0}using System.Data.SqlClient;{0}using System.Text;{0}using Napoleon.Db;using {1};{0}", PublicFiled.WarpSymbol, namespaces + ".IDAL");
+            top.AppendFormat("using System.Data;{0}using System.Data.SqlClient;{0}using System.Text;{0}using Napoleon.Db;{0}using {1};{0}", PublicFiled.WarpSymbol, namespaces + ".IDAL");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("namespace {0}{1}", namespaces + ".DAL", PublicFiled.WarpSymbol);
             top.Append("{");
@@ -216,7 +216,7 @@ namespace NapoleonCode.Win.MovingTemplate
         {
             StringBuilder top = new StringBuilder();
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("using System.Data;using {0};{1}{1}", namespaces + ".IBLL", PublicFiled.WarpSymbol);
+            top.AppendFormat("using System.Data;{1}using {0};{1}{1}", namespaces + ".IBLL", PublicFiled.WarpSymbol);
             top.AppendFormat("namespace {0}{1}", namespaces + ".BLL", PublicFiled.WarpSymbol);
             top.Append("{");
             top.AppendFormat("{0}{0}", PublicFiled.WarpSymbol);
@@ -229,7 +229,7 @@ namespace NapoleonCode.Win.MovingTemplate
                 dbName.ToLower(), PublicFiled.WarpSymbol);
             top.Append("\t\t{");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
-            top.AppendFormat("{0}{0}{0}_{1}Dao={2}Dao;{3}", PublicFiled.TabSymbol, dbName.ToLower(), dbName, PublicFiled.WarpSymbol);
+            top.AppendFormat("{0}{0}{0}_{1}Dao={1}Dao;{2}", PublicFiled.TabSymbol, dbName.ToLower(), PublicFiled.WarpSymbol);
             top.Append("\t\t}");
             top.AppendFormat("{0}", PublicFiled.WarpSymbol);
             top.AppendFormat("{0}{1}", ContentService(dt, dbName), PublicFiled.WarpSymbol);

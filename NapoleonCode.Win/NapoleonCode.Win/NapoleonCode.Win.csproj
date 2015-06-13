@@ -94,6 +94,7 @@
       <DependentUpon>SqLiteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MovingTemplate\AutoDapperTemplate.cs" />
+    <Compile Include="MovingTemplate\ExportTemplate.cs" />
     <Compile Include="MovingTemplate\PublicTemplate.cs" />
     <Compile Include="SelectDbForm.cs">
       <SubType>Form</SubType>

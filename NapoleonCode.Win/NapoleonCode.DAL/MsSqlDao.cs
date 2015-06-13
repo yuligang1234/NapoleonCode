@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using NapoleonCode.Model;
@@ -51,6 +52,31 @@ namespace NapoleonCode.DAL
                 connection.Close();
             }
             return dataTable;
+        }
+
+        /// <summary>
+        ///  公共语句
+        /// </summary>
+        /// <param name="sqlList">The SQL list.</param>
+        /// <param name="appConfig">The application configuration.</param>
+        /// <param name="dataBaseName">Name of the data base.</param>
+        /// Author  : Napoleon
+        /// Created : 2015-06-13 14:37:17
+        public DataSet ExecuteSql(List<string> sqlList, AppConfig appConfig, string dataBaseName)
+        {
+            DataSet ds = new DataSet();
+            using (SqlConnection conn = new SqlConnection(GetConnectionString(appConfig, dataBaseName)))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                foreach (var sql in sqlList)
+                {
+                    cmd.CommandText = sql;
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                    dataAdapter.Fill(ds);
+                }
+            }
+            return ds;
         }
 
         /// <summary>

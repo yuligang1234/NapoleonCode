@@ -16,16 +16,28 @@ namespace NapoleonCode.Win.MovingTemplate
         ///  公用DataTable
         /// </summary>
         /// <param name="appConfig">数据库配置类</param>
+        /// <param name="tableName">数据库表名</param>
         /// Author  : Napoleon
         /// Created : 2014-12-15 20:27:01
-        public static DataTable GetTable(AppConfig appConfig)
+        public static DataTable GetTable(AppConfig appConfig, string tableName)
+        {
+            DataTable dataBaseTables = Bll.ExecuteSql(GetTableSql(tableName), appConfig, PublicFiled.DataBaseName);
+            return dataBaseTables;
+        }
+
+        /// <summary>
+        ///  查询数据库表信息的公共语句
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <returns>System.String.</returns>
+        /// Author  : Napoleon
+        /// Created : 2015-06-13 14:45:19
+        public static string GetTableSql(string tableName)
         {
             string sql =
                 string.Format(
-                    "SELECT obj.name AS TableName ,col.colorder AS Id ,col.name AS TableColumn ,ISNULL(ep.[value], col.name) AS TableDesc ,t.name AS DataType ,col.length AS TypeLength ,ISNULL(COLUMNPROPERTY(col.id, col.name, 'Scale'), 0) AS DecimalLength ,CASE WHEN COLUMNPROPERTY(col.id, col.name, 'IsIdentity') = 1 THEN 'true' ELSE 'false' END AS IsFlag ,CASE WHEN EXISTS (SELECT 1 FROM dbo.sysindexes si INNER JOIN dbo.sysindexkeys sik ON si.id = sik.id INNER JOIN dbo.syscolumns sc ON sc.id = sik.id AND sc.colid = sik.colid INNER JOIN dbo.sysobjects so ON so.name = si.name AND so.xtype = 'PK' WHERE sc.id = col.id AND sc.colid = col.colid ) THEN 'true' ELSE 'false' END AS IsKey , CASE WHEN col.isnullable = 1 THEN 'true' ELSE 'false' END AS IsNull , ISNULL(comm.text, '') AS DefaultValue FROM dbo.syscolumns col LEFT OUTER JOIN dbo.systypes t ON col.xtype = t.xusertype INNER JOIN dbo.sysobjects obj ON col.id = obj.id AND obj.xtype = 'U' AND obj.status >= 0 LEFT OUTER JOIN dbo.syscomments comm ON col.cdefault = comm.id LEFT OUTER JOIN sys.extended_properties ep ON col.id = ep.major_id AND col.colid = ep.minor_id AND ep.name = 'MS_Description' LEFT OUTER JOIN sys.extended_properties epTwo ON obj.id = epTwo.major_id AND epTwo.minor_id = 0 AND epTwo.name ='MS_Description' WHERE obj.name = '{0}' ORDER BY  col.colorder",
-                    PublicFiled.TableName);
-            DataTable dataBaseTables = Bll.ExecuteSql(sql, appConfig, PublicFiled.DataBaseName);
-            return dataBaseTables;
+                    "SELECT obj.name AS TableName ,col.colorder AS Id ,col.name AS TableColumn ,ISNULL(ep.[value], col.name) AS TableDesc ,t.name AS DataType ,col.length AS TypeLength ,ISNULL(COLUMNPROPERTY(col.id, col.name, 'Scale'), 0) AS DecimalLength ,CASE WHEN COLUMNPROPERTY(col.id, col.name, 'IsIdentity') = 1 THEN 'true' ELSE 'false' END AS IsFlag ,CASE WHEN EXISTS (SELECT 1 FROM dbo.sysindexes si INNER JOIN dbo.sysindexkeys sik ON si.id = sik.id INNER JOIN dbo.syscolumns sc ON sc.id = sik.id AND sc.colid = sik.colid INNER JOIN dbo.sysobjects so ON so.name = si.name AND so.xtype = 'PK' WHERE sc.id = col.id AND sc.colid = col.colid ) THEN 'true' ELSE 'false' END AS IsKey , CASE WHEN col.isnullable = 1 THEN 'true' ELSE 'false' END AS IsNull , ISNULL(comm.text, '') AS DefaultValue FROM dbo.syscolumns col LEFT OUTER JOIN dbo.systypes t ON col.xtype = t.xusertype INNER JOIN dbo.sysobjects obj ON col.id = obj.id AND obj.xtype = 'U' AND obj.status >= 0 LEFT OUTER JOIN dbo.syscomments comm ON col.cdefault = comm.id LEFT OUTER JOIN sys.extended_properties ep ON col.id = ep.major_id AND col.colid = ep.minor_id AND ep.name = 'MS_Description' LEFT OUTER JOIN sys.extended_properties epTwo ON obj.id = epTwo.major_id AND epTwo.minor_id = 0 AND epTwo.name ='MS_Description' WHERE obj.name = '{0}' ORDER BY  col.colorder", tableName);
+            return sql;
         }
 
         /// <summary>

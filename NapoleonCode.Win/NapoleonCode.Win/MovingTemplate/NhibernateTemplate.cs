@@ -21,12 +21,14 @@ namespace NapoleonCode.Win.MovingTemplate
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString()));//注释
-                    sb.AppendFormat("public virtual {0} {1}{2}", PublicFun.MsSqlFormatType(1, row["DataType"].ToString()), row["TableColumn"], PublicFiled.WarpSymbol);
+                    sb.AppendFormat("{0}", PublicFun.GetCommentary(row["TableDesc"].ToString(), 2));//注释
+                    sb.AppendFormat("{3}{3}public virtual {0} {1}{2}", PublicFun.MsSqlFormatType(1, row["DataType"].ToString()), row["TableColumn"], PublicFiled.WarpSymbol, PublicFiled.TabSymbol);
+                    sb.AppendFormat("{0}{0}", PublicFiled.TabSymbol);
                     sb.Append("{");
                     sb.AppendFormat("{0}", PublicFiled.WarpSymbol);
-                    sb.AppendFormat("{0}get ;{1}", PublicFiled.TabSymbol, PublicFiled.WarpSymbol);
-                    sb.AppendFormat("{0}set ;{1}", PublicFiled.TabSymbol, PublicFiled.WarpSymbol);
+                    sb.AppendFormat("{0}{0}{0}get ;{1}", PublicFiled.TabSymbol, PublicFiled.WarpSymbol);
+                    sb.AppendFormat("{0}{0}{0}set ;{1}", PublicFiled.TabSymbol, PublicFiled.WarpSymbol);
+                    sb.AppendFormat("{0}{0}", PublicFiled.TabSymbol);
                     sb.Append("}");
                     sb.AppendFormat("{0}{0}", PublicFiled.WarpSymbol);
                 }
